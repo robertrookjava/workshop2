@@ -4,6 +4,13 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject2.model;
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 import java.math.BigDecimal;
 
@@ -11,15 +18,24 @@ import java.math.BigDecimal;
  *
  * @author robertrook
  */
-public class Artikel {
+@Entity
+public class Artikel implements Serializable {
+    
+    @Id
+    @GeneratedValue
     private int idArtikel;
+    
+   
     private String naam;
+    
+    
     private BigDecimal prijs;
     private int voorraad;
     
     public Artikel(){
     }
 
+    
     public int getIdArtikel() {
         return idArtikel;
     }

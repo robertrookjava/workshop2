@@ -4,33 +4,49 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject2.model;
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.Embeddable;
+import javax.persistence.EmbeddedId;
 
 /**
  *
  * @author robertrook
  */
-public class BestelArtikel {
-    private int idBestelling;
-    private int idArtikel;
+@Entity
+public class BestelArtikel implements Serializable{
+    
+    
+    @EmbeddedId
+    private BestelArtikelPK bestelArtikelPK;
+    
+ 
     private int aantal; 
     
     public BestelArtikel(){
     }
 
     public int getIdBestelling() {
-        return idBestelling;
+
+        return bestelArtikelPK.idBestelling;
     }
 
     public void setIdBestelling(int idBestelling) {
-        this.idBestelling = idBestelling;
+        this.bestelArtikelPK.idBestelling = idBestelling;
     }
 
     public int getIdArtikel() {
-        return idArtikel;
+        return bestelArtikelPK.idArtikel;
     }
 
     public void setIdArtikel(int idArtikel) {
-        this.idArtikel = idArtikel;
+        this.bestelArtikelPK.idArtikel = idArtikel;
     }
 
     public int getAantal() {
@@ -41,3 +57,5 @@ public class BestelArtikel {
         this.aantal = aantal;
     }
 }
+
+

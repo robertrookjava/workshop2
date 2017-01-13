@@ -6,14 +6,26 @@
 package com.mycompany.mavenproject2.model;
 
 import java.util.Date;
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
  * @author robertrook
  */
-public class Bestelling {
+@Entity
+public class Bestelling implements Serializable {
+    @Id
+    @GeneratedValue
     private int idBestelling;
     private int idKlant;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date datum_bestelling;
     private int idAccount;
     

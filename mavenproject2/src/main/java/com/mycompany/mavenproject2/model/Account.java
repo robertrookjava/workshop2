@@ -5,18 +5,33 @@
  */
 package com.mycompany.mavenproject2.model;
 
-import java.util.Date;
 
+import java.util.Date;
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
 /**
  *
  * @author robertrook
  */
-public class Account {
+@Entity
+public class Account implements Serializable {
     
+    @Id
     private int idAccount;
+    
     private String gebruikersnaam;
+    
     private String wachtwoord;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date datum_aanmaak;
+    
     private int accountype_id;
     
     

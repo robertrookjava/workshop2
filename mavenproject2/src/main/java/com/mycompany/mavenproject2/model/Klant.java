@@ -4,12 +4,21 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject2.model;
-
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.Table;
 /**
  *
  * @author robertrook
  */
-public class Klant {
+@Entity
+public class Klant implements Serializable {
+    @Id
+    @GeneratedValue
     private int idKlant;
     private String voornaam;
     private String achternaam;

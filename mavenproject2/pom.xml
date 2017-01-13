@@ -90,6 +90,11 @@
     <artifactId>hibernate-ehcache</artifactId>
     <version>5.2.6.Final</version>
 </dependency>
+        <dependency>
+            <groupId>org.eclipse.persistence</groupId>
+            <artifactId>eclipselink</artifactId>
+            <version>2.5.2</version>
+        </dependency>
     </dependencies>
     <name>Workshop2</name>
 </project>
