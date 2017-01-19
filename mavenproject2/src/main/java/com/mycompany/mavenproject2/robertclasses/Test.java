@@ -16,6 +16,18 @@ import com.mycompany.mavenproject2.model.Bestelling;
 import com.mycompany.mavenproject2.database.dao.BestelArtikelDAO;
 import com.mycompany.mavenproject2.model.BestelArtikel;
 
+import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import java.util.*;
 
 
@@ -269,14 +281,22 @@ public class Test {
      
     public static void testArtikelCreate(){
         
-        
-        
+       EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("com.mycompany_mavenproject2_jar_1.0-SNAPSHOTPU");
+       EntityManager entitymanager = entityManagerFactory.createEntityManager();
+       
         //ArtikelDAO artikelDao = new ArtikelDAO();
+        entitymanager.getTransaction().begin();
         Artikel artikel = new Artikel();
         artikel.setIdArtikel(0);
         artikel.setNaam("naam7");
         artikel.setPrijs(new BigDecimal("77.77"));
         artikel.setVoorraad(77);
+        
+        entitymanager.persist(artikel);
+        entitymanager.getTransaction( ).commit( );
+
+        entitymanager.close( );
+        entityManagerFactory.close( );
         
        
         //artikelDao.create(artikel);
