@@ -41,6 +41,9 @@ import java.util.Set;
  */
 public class Test {
     
+    
+    
+    
     public static void testDatabaseConnection(){
        try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -280,28 +283,41 @@ public class Test {
         
      
     public static void testArtikelCreate(){
-        
-       EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("com.mycompany_mavenproject2_jar_1.0-SNAPSHOTPU");
-       EntityManager entitymanager = entityManagerFactory.createEntityManager();
-       
+        System.out.println("Robert1");
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unit1");
+        System.out.println("Robert2");
+        EntityManager entitymanager = entityManagerFactory.createEntityManager();
+        System.out.println("Robert3");
         //ArtikelDAO artikelDao = new ArtikelDAO();
         entitymanager.getTransaction().begin();
+        System.out.println("Robert4");
         Artikel artikel = new Artikel();
+        System.out.println("Robert5");
         artikel.setIdArtikel(0);
+        System.out.println("Robert6");
         artikel.setNaam("naam7");
+        System.out.println("Robert7");
         artikel.setPrijs(new BigDecimal("77.77"));
+        System.out.println("Robert8");
         artikel.setVoorraad(77);
+         System.out.println("Robert9");
         
         entitymanager.persist(artikel);
+        System.out.println("Robert10");
         entitymanager.getTransaction( ).commit( );
+        System.out.println("Robert11");
 
         entitymanager.close( );
+        System.out.println("Robert12");
         entityManagerFactory.close( );
+        System.out.println("Robert13");
         
        
         //artikelDao.create(artikel);
  
     }
+    
+    
       
     public static void testArtikelDelete(){
         //ArtikelDAO artikelDao = new ArtikelDAO();
