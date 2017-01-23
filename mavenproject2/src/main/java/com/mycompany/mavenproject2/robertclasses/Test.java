@@ -15,6 +15,7 @@ import com.mycompany.mavenproject2.database.dao.BestellingDAO;
 import com.mycompany.mavenproject2.model.Bestelling;
 import com.mycompany.mavenproject2.database.dao.BestelArtikelDAO;
 import com.mycompany.mavenproject2.model.BestelArtikel;
+import com.mycompany.mavenproject2.model.Model2;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -283,34 +284,38 @@ public class Test {
         
      
     public static void testArtikelCreate(){
-        System.out.println("Robert1");
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unit1");
-        System.out.println("Robert2");
-        EntityManager entitymanager = entityManagerFactory.createEntityManager();
-        System.out.println("Robert3");
+       
+        //EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unit1");
+     
+        //EntityManager entitymanager = entityManagerFactory.createEntityManager();
+       
         //ArtikelDAO artikelDao = new ArtikelDAO();
-        entitymanager.getTransaction().begin();
-        System.out.println("Robert4");
-        Artikel artikel = new Artikel();
-        System.out.println("Robert5");
-        artikel.setIdArtikel(0);
-        System.out.println("Robert6");
-        artikel.setNaam("naam7");
-        System.out.println("Robert7");
-        artikel.setPrijs(new BigDecimal("77.77"));
-        System.out.println("Robert8");
-        artikel.setVoorraad(77);
-         System.out.println("Robert9");
+        //entitymanager.getTransaction().begin();
+       
+        //Artikel artikel = new Artikel();
+    
+        //artikel.setIdArtikel(0);
         
-        entitymanager.persist(artikel);
-        System.out.println("Robert10");
-        entitymanager.getTransaction( ).commit( );
-        System.out.println("Robert11");
+        //artikel.setNaam("naam7");
+      
+        //artikel.setPrijs(new BigDecimal("77.77"));
+       
+        //artikel.setVoorraad(77);
+         //System.out.println("Robert9");
+        
+        //entitymanager.persist(artikel);
+        //System.out.println("Robert10");
+        //entitymanager.getTransaction( ).commit( );
+        //System.out.println("Robert11");
 
-        entitymanager.close( );
-        System.out.println("Robert12");
-        entityManagerFactory.close( );
-        System.out.println("Robert13");
+        //entitymanager.close( );
+        //System.out.println("Robert12");
+        //entityManagerFactory.close( );
+        //System.out.println("Robert13");
+        
+        Model2 model = new Model2();
+        model.createArtikel("naam1", new BigDecimal (77.77), 10);
+        
         
        
         //artikelDao.create(artikel);

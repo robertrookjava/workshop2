@@ -6,6 +6,10 @@
 package com.mycompany.mavenproject2.database.dao2;
 
 import com.mycompany.mavenproject2.model.Artikel;
+import com.mycompany.mavenproject2.model.BestelArtikel;
+import com.mycompany.mavenproject2.model.BestelArtikelPK;
+
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -21,8 +25,10 @@ import javax.persistence.Table;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -35,10 +41,11 @@ public class ArtikelDAO2 {
         
         try{
             
-            entityManager= EntityManagerUtil.getEntityManager();
+            entityManager=EntityManagerUtil.getEntityManager();
             entityManager.getTransaction().begin();
             entityManager.persist(artikel);
             entityManager.getTransaction().commit();
+            
             
         }
         catch (Exception e){
@@ -61,6 +68,7 @@ public class ArtikelDAO2 {
             entityManager.remove(gevondenArtikel);
             entityManager.getTransaction().commit();
             
+            
         }catch (Exception e){
             e.printStackTrace();
         }        
@@ -78,6 +86,7 @@ public class ArtikelDAO2 {
         try{
             entityManager = EntityManagerUtil.getEntityManager();
             gevondenArtikel = (Artikel)entityManager.find(Artikel.class, artikel.getIdArtikel());
+           
             
         }catch(Exception e){
             e.printStackTrace();
@@ -96,23 +105,69 @@ public class ArtikelDAO2 {
         
     }
     
+    
+    // even vragen of uitzoeken
     public boolean existsBestelArtikelByIdArtikel (Artikel artikel){
          boolean exists = false;
+         EntityManager entityManager;
+         
+         boolean notFound = false;
+         int id = artikel.getIdArtikel();
+                 
+         
+        try{
+            entityManager = EntityManagerUtil.getEntityManager();
+            
+            Query query = entityManager.createQuery("SELECT b FROM BestelArtikel b WHERE b.bestelArtikelPK = ?1").setParameter(1, id);
+          
+            notFound = query.setMaxResults(1).getResultList().isEmpty();
+            exists = !notFound;
+            
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }                        
          
          return exists;
     }
     
+    
+    
     public boolean existsByNaam(Artikel artikel){
         boolean exists = false;
-         
+        EntityManager entityManager;
+        
+   //     EntityManager em;
+   // Query q = em.createQuery ("SELECT x FROM Magazine x WHERE x.title = :titleParam and x.price > :priceParam");
+   // q.setParameter ("titleParam", "JDJ").setParameter ("priceParam", 5.0);
+   // List<Magazine> results = (List<Magazine>) q.getResultList ();
+    
+    
+        entityManager = EntityManagerUtil.getEntityManager();
+            
+        Query query = entityManager.createQuery("select x from Artikel x where x.naam= naamParam");
+        query.setParameter("naamParam",artikel.getNaam());
+        boolean notFound = query.setMaxResults(1).getResultList().isEmpty();
+        exists = !notFound;
+        
+ 
         return exists;
-        
-        
+      
         
     }
     
     public Set<Artikel> readAll(){
         Set<Artikel> artikelen = new HashSet<>();
+        EntityManager entityManager;
+        
+        entityManager = EntityManagerUtil.getEntityManager();
+       //public Collection<Professor> findAllProfessors() {
+       // Query query = em.createQuery("SELECT e FROM Professor e");
+       // return (Collection<Professor>) query.getResultList();
+ 
+        Query query = entityManager.createQuery("select x From artikel x");
+        artikelen = (Set<Artikel>) query.getResultList();
+        
         
         return artikelen;
     }
@@ -120,12 +175,38 @@ public class ArtikelDAO2 {
     public Set<Artikel> readByNaam(Artikel artikel){
         Set<Artikel> artikelen = new HashSet<>();
         
+        EntityManager entityManager;
+        
+         entityManager = EntityManagerUtil.getEntityManager();
+            
+        Query query = entityManager.createQuery("select x from Artikel x where x.naam= naamParam");
+        query.setParameter("naamParam",artikel.getNaam());
+        
+        artikelen = (Set<Artikel>) query.getResultList();
+        
+        
+        
+        
+        
+        
+        
         return artikelen;
     }
      
     public void update(Artikel artikel){
+        EntityManager entityManager = null;
+        
+        try {            
+            entityManager= EntityManagerUtil.getEntityManager();
+            entityManager.getTransaction().begin();
+            entityManager.merge(artikel);
+            entityManager.getTransaction().commit();
+            
+        }catch (Exception e){
+            e.printStackTrace();
+        }        
           
-      }
+    }
       
       
     
