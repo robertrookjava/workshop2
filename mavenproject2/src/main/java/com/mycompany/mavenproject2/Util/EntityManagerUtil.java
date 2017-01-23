@@ -26,7 +26,8 @@ public class EntityManagerUtil {
 	      entityManagerFactory = Persistence.createEntityManagerFactory("unit1");
 	      System.out.println("Robert2 in EntityManagerUtil");
 
-	    } catch (Throwable ex) {	      
+	    } catch (Throwable ex) {
+              System.out.println("Robert 3 "+ex.toString());  
 	      throw new ExceptionInInitializerError(ex);
 	    }
 	  }

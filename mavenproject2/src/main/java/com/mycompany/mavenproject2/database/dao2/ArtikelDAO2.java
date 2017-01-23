@@ -42,9 +42,11 @@ public class ArtikelDAO2 {
         try{
             
             entityManager=EntityManagerUtil.getEntityManager();
+            System.out.println("Robert3 na getEntityManager");
             entityManager.getTransaction().begin();
             entityManager.persist(artikel);
             entityManager.getTransaction().commit();
+            System.out.println("Robert4 na commit");
             
             
         }

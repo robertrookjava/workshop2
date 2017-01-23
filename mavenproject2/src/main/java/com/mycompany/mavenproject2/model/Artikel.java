@@ -13,16 +13,18 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import java.math.BigDecimal;
+import javax.persistence.GenerationType;
 
 /**
  *
  * @author robertrook
  */
-@Entity
+@Entity 
+@Table(name="artikel")
 public class Artikel implements Serializable {
     
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int idArtikel;
     
    
