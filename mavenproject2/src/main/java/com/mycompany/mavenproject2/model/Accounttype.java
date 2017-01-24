@@ -22,6 +22,7 @@ import javax.persistence.Temporal;
  * @author robertrook
  */
 @Entity
+@Table(name="accountype")
 public class Accounttype implements Serializable {
     
     @Id

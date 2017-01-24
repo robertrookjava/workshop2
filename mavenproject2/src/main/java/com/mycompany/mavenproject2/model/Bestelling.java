@@ -10,6 +10,7 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -20,9 +21,10 @@ import javax.persistence.Temporal;
  * @author robertrook
  */
 @Entity
+@Table(name="bestelling")
 public class Bestelling implements Serializable {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int idBestelling;
     private int idKlant;
     @Temporal(javax.persistence.TemporalType.DATE)

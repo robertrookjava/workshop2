@@ -5,7 +5,9 @@
  */
 package com.mycompany.mavenproject2.database.dao2;
 
+import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import com.mycompany.mavenproject2.model.Accounttype;
+import javax.persistence.EntityManager;
 
 /**
  *
@@ -14,6 +16,20 @@ import com.mycompany.mavenproject2.model.Accounttype;
 public class AccounttypeDAO2 {
     
     public void create(Accounttype accounttype)   {
+        EntityManager entityManager = null;
+        
+        try{
+            
+            entityManager=EntityManagerUtil.getEntityManager();
+            entityManager.getTransaction().begin();
+            entityManager.persist(accounttype);
+            entityManager.getTransaction().commit();
+                       
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }        
+        
         
     }
     

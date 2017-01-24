@@ -21,13 +21,9 @@ public class EntityManagerUtil {
 	
 	private static final EntityManagerFactory entityManagerFactory;
 	  static {
-            try {
-              System.out.println("Robert1 in EntityManagerUtil");
-	      entityManagerFactory = Persistence.createEntityManagerFactory("unit1");
-	      System.out.println("Robert2 in EntityManagerUtil");
-
-	    } catch (Throwable ex) {
-              System.out.println("Robert 3 "+ex.toString());  
+            try {              
+	      entityManagerFactory = Persistence.createEntityManagerFactory("unit1");	      
+	    } catch (Throwable ex) {  
 	      throw new ExceptionInInitializerError(ex);
 	    }
 	  }

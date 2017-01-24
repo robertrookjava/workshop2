@@ -42,13 +42,10 @@ public class ArtikelDAO2 {
         try{
             
             entityManager=EntityManagerUtil.getEntityManager();
-            System.out.println("Robert3 na getEntityManager");
             entityManager.getTransaction().begin();
             entityManager.persist(artikel);
             entityManager.getTransaction().commit();
-            System.out.println("Robert4 na commit");
-            
-            
+                       
         }
         catch (Exception e){
             e.printStackTrace();
@@ -120,8 +117,8 @@ public class ArtikelDAO2 {
         try{
             entityManager = EntityManagerUtil.getEntityManager();
             
-            Query query = entityManager.createQuery("SELECT b FROM BestelArtikel b WHERE b.bestelArtikelPK = ?1").setParameter(1, id);
-          
+            Query query = entityManager.createQuery("SELECT b FROM BestelArtikel b WHERE b.bestelArtikelPK.idArtikel = :param");
+            query.setParameter("param", id);
             notFound = query.setMaxResults(1).getResultList().isEmpty();
             exists = !notFound;
             
@@ -147,7 +144,7 @@ public class ArtikelDAO2 {
     
         entityManager = EntityManagerUtil.getEntityManager();
             
-        Query query = entityManager.createQuery("select x from Artikel x where x.naam= naamParam");
+        Query query = entityManager.createQuery("select x from Artikel x where x.naam= :naamParam");
         query.setParameter("naamParam",artikel.getNaam());
         boolean notFound = query.setMaxResults(1).getResultList().isEmpty();
         exists = !notFound;
@@ -167,7 +164,7 @@ public class ArtikelDAO2 {
        // Query query = em.createQuery("SELECT e FROM Professor e");
        // return (Collection<Professor>) query.getResultList();
  
-        Query query = entityManager.createQuery("select x From artikel x");
+        Query query = entityManager.createQuery("select x From Artikel x");
         artikelen = (Set<Artikel>) query.getResultList();
         
         
@@ -179,9 +176,9 @@ public class ArtikelDAO2 {
         
         EntityManager entityManager;
         
-         entityManager = EntityManagerUtil.getEntityManager();
+        entityManager = EntityManagerUtil.getEntityManager();
             
-        Query query = entityManager.createQuery("select x from Artikel x where x.naam= naamParam");
+        Query query = entityManager.createQuery("select x from Artikel x where x.naam= :naamParam");
         query.setParameter("naamParam",artikel.getNaam());
         
         artikelen = (Set<Artikel>) query.getResultList();
