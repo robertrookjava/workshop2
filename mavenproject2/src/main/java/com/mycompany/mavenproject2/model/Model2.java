@@ -22,7 +22,67 @@ import com.mycompany.mavenproject2.database.Database;
  */
 public class Model2 {
     
-    // artikel acties =>
+    
+    private void maakAccountTypeRecord(){
+        
+        
+        AccounttypeDAO2 accounttypeDao = new AccounttypeDAO2();
+        Accounttype accounttype = new Accounttype();
+        accounttype.setId(1);
+        accounttype.setTYpe("amin");
+        
+        accounttypeDao.create(accounttype);
+        
+      
+    }
+    
+    private boolean bestaatAccount(int i){
+        boolean output = false;
+        
+        
+        AccountDAO2 accountDao = new  AccountDAO2();
+        Account account = new Account();
+        account.setIdAccount(1);
+      
+        output = accountDao.bestaatAccount(account);
+
+      
+        
+        return output;
+            
+        
+    }
+    
+    
+    
+    
+    private void maakAccountRecord(){
+        
+        AccountDAO2 accountDao = new  AccountDAO2();
+        Account account = new Account();
+        account.setIdAccount(1);
+        account.setGebruikersnaam("Robert Rook");
+        account.setWachtwoord("Geheim");
+        account.setDatum_Aanmaak (new Date());
+        account.setAccountype_id(1);
+        
+        accountDao.create(account);
+       
+        
+        
+    }
+    
+
+    public void maakAccount(){
+        boolean bestaatAccount1 = bestaatAccount(1);
+         
+        if (!bestaatAccount1){
+            maakAccountTypeRecord();
+            maakAccountRecord();
+        }
+     }
+    
+    
     
     public void createArtikel(String naam, BigDecimal prijs, int voorraad){ 
        
@@ -142,11 +202,319 @@ public class Model2 {
         
         return exists;
        
-   }
+    }
+    
+    // klant acties 
+    
+     public void createKlant(String voornaam, String achternaam, String tussenvoegsel, String telefoonnummer, String emailadres){
+        
+        KlantDAO2 klantDao = new KlantDAO2();
+        Klant klant = new Klant();
+       
+        
+        klant.setIdKlant(0);
+        klant.setVoornaam(voornaam);
+        klant.setAchternaam(achternaam);
+        klant.setTussenvoegsel(tussenvoegsel);
+        klant.setTelefoonnummer(telefoonnummer);
+        klant.setEmailadres(emailadres);
+
+        klantDao.create(klant);
+
+    }
+      
+    public void deleteKlant(int idKlant) {
+        
+        KlantDAO2 klantDao = new KlantDAO2();
+        Klant klant = new Klant();
+        klant.setIdKlant(idKlant);
+       
+        klantDao.delete(klant);
+
+    }
+    
+    
+    public Klant readByIDKlant(int idKlant){
+        
+        
+        KlantDAO2 klantDao = new KlantDAO2();
+        Klant klant = new Klant();
+        klant.setIdKlant(idKlant);
+    
+        Klant gevondenKlant = klantDao.readByIdKLant(klant);
+
+        return gevondenKlant;
    
+    }
+    
+    
+    public boolean existsByIDKlant(int idKlant){
+        
+        
+        KlantDAO2 klantDao = new KlantDAO2();
+        Klant klant = new Klant();
+        klant.setIdKlant(idKlant);
+    
+        boolean exists = klantDao.existsByIdKLant(klant);
+
+        return exists;
+   
+    }
+    
+    public boolean existsBestellingByIdKlant (int idKlant){
+       
+        KlantDAO2 klantDao = new KlantDAO2();
+        Klant klant = new Klant();
+        klant.setIdKlant(idKlant);
+        boolean exists = klantDao.existsBestellingByIdKlant(klant);
+        return exists;
+    }
+    
+    public boolean existsBestelArtikelByIdArtikel (int idArtikel){
+       
+        ArtikelDAO2 artikelDao = new ArtikelDAO2();
+        Set<Artikel> artikelen = artikelDao.readAll();
+        Artikel artikel = new Artikel();
+        artikel.setIdArtikel(idArtikel);
+        boolean exists = artikelDao.existsBestelArtikelByIdArtikel(artikel);
+        return exists;
+    }
+    
+    public void updateKlant(int idKlant, String voornaam, String achternaam, String tussenvoegsel, String telefoonnummer, String emailadres) {
+        
+        
+        KlantDAO2 klantDao = new KlantDAO2();
+        Klant klant = new Klant();
+        klant.setIdKlant(idKlant);
+        klant.setVoornaam(voornaam);
+        klant.setAchternaam(achternaam);
+        klant.setTussenvoegsel(tussenvoegsel);
+        klant.setTelefoonnummer(telefoonnummer);
+        klant.setEmailadres(emailadres);
+   
+        klantDao.update(klant);
+ 
+    }
+    
+    public Set<Klant> readAllKlant() {
+        
+        KlantDAO2 klantDao = new KlantDAO2();
+        Set<Klant> klanten = klantDao.readAll();
+       
+        return klanten;
+
+
+    }
+    
+    public Set<Klant> readByAchternaamKlant(String achternaam){
+        
+        
+        KlantDAO2 klantDao = new KlantDAO2();
+        Klant klant = new Klant();
+        klant.setAchternaam(achternaam);
+        Set<Klant> klanten = klantDao.readByAchternaamKlant(klant);
+        
+        return klanten;
+     
+    }
+    
+    public boolean existsByAchternaamKlant(String achternaam){
+        
+        
+        KlantDAO2 klantDao = new KlantDAO2();
+        Klant klant = new Klant();
+        klant.setAchternaam(achternaam);
+        boolean exists = klantDao.existsByAchternaamKlant(klant);
+        
+        return exists;
+     
+    }
+    
+    
+    
+    // bestelling acties
+    
+    
+    
+    public int createBestelling(int idKlant, int idAccount){
+       
+        BestellingDAO2 bestellingDao = new BestellingDAO2();
+        Bestelling bestelling = new Bestelling();
+        bestelling.setIdBestelling(0);
+        bestelling.setIdKlant(idKlant);
+        bestelling.setDatum_Bestelling(new Date());
+        bestelling.setIdAccount(idAccount);
+        
+        int idBestelling = bestellingDao.create(bestelling);
+      
+        return idBestelling;
+    }
+    
+    public void deleteBestelling(int idBestelling){
+        
+        BestellingDAO2 bestellingDao = new BestellingDAO2();
+        Bestelling bestelling = new Bestelling();
+        bestelling.setIdBestelling(idBestelling);
+        
+        bestellingDao.delete(bestelling);
+    
+    }
+    
+    public Bestelling readByIdBestelling(int idBestelling){
+        
+        
+        BestellingDAO2 bestellingDao = new BestellingDAO2();
+        Bestelling bestelling = new Bestelling();
+        bestelling.setIdBestelling(idBestelling);
+        Bestelling gevondenBestelling = bestellingDao.readByIdBestelling(bestelling);
+
+        return gevondenBestelling;
+     
+    }
+    
+    
+    public boolean existsByIdBestelling(int idBestelling){
+        
+        
+        BestellingDAO2 bestellingDao = new BestellingDAO2();
+        Bestelling bestelling = new Bestelling();
+        bestelling.setIdBestelling(idBestelling);
+        boolean exists = bestellingDao.existsByIdBestelling(bestelling);
+
+        return exists;
+     
+    }
+    
+    
+    
+    public Set<Bestelling> readAllBestelling(){
+        
+        BestellingDAO2 bestellingDao = new BestellingDAO2();
+        Set<Bestelling> bestellingen = bestellingDao.readAll();
+       
+        return bestellingen;
+ 
+    }
+    
+    public Set<Bestelling> readByIdKlantBestelling(int idKlant){
+        
+        
+        BestellingDAO2 bestellingDao = new BestellingDAO2();
+        Bestelling bestelling = new Bestelling();
+        bestelling.setIdKlant(idKlant);
+        Set<Bestelling> bestellingen = bestellingDao.readByIdKlant(bestelling);
+        
+        return bestellingen;
+    }
+    
+    public void updateBestelling(int idBestelling, int idKlant, int idAccount){
+        
+        BestellingDAO2 bestellingDao = new BestellingDAO2();
+        Bestelling bestelling = new Bestelling();
+        
+        bestelling.setIdBestelling(idBestelling);
+        bestelling.setIdKlant(idKlant);
+        bestelling.setDatum_Bestelling(new Date());
+        bestelling.setIdAccount(idAccount);
+
+        bestellingDao.update(bestelling);
+
+    }
+    
+    public void createBestelArtikel(int idBestelling, int idArtikel, int aantal){
+       
+        BestelArtikelDAO2 bestelArtikelDao = new BestelArtikelDAO2();
+        BestelArtikel bestelArtikel = new BestelArtikel();
+        bestelArtikel.setIdBestelling(idBestelling);
+        bestelArtikel.setIdArtikel(idArtikel);
+        bestelArtikel.setAantal(aantal);
+      
+        bestelArtikelDao.create(bestelArtikel);
+
+    }
+    
+    public void deleteBestelArtikel(int idBestelling, int idArtikel){
+       
+        BestelArtikelDAO2 bestelArtikelDao = new BestelArtikelDAO2();
+
+        BestelArtikel bestelArtikel = new BestelArtikel();
+        bestelArtikel.setIdBestelling(idBestelling);
+        bestelArtikel.setIdArtikel(idArtikel);
+        
+     
+        bestelArtikelDao.delete(bestelArtikel);
+  
+    }
+    
+    public BestelArtikel readByIdBestellingIdArtikel(int idBestelling, int idArtikel){
+        
+        BestelArtikelDAO2 bestelArtikelDao = new BestelArtikelDAO2();
+
+        BestelArtikel bestelArtikel = new BestelArtikel();
+        bestelArtikel.setIdBestelling(idBestelling);
+        bestelArtikel.setIdArtikel(idArtikel);
+        
+        BestelArtikel gevondenBestelArtikel=bestelArtikelDao.readByIdBestellingIdArtikel(bestelArtikel);
+        
+        return gevondenBestelArtikel;
+  
+    }
+    
+    public boolean existsByIdBestellingIdArtikel(int idBestelling, int idArtikel){
+        
+        BestelArtikelDAO2 bestelArtikelDao = new BestelArtikelDAO2();
+
+        BestelArtikel bestelArtikel = new BestelArtikel();
+        bestelArtikel.setIdBestelling(idBestelling);
+        bestelArtikel.setIdArtikel(idArtikel);
+        
+        boolean exists=bestelArtikelDao.existsByIdBestellingIdArtikel(bestelArtikel);
+        
+        return exists;
+  
+    }
+    
+    public Set<BestelArtikel> readAllBestelArtikel(){
+       
+        BestelArtikelDAO2 bestelArtikelDao = new BestelArtikelDAO2();
+
+        Set<BestelArtikel> bestelArtikelen = bestelArtikelDao.readAll();
+
+        return bestelArtikelen;
+    }
+    
+    public Set<BestelArtikel> readByIdBestellingBestelArtikel(int idBestelling){
+        
+        BestelArtikelDAO2 bestelArtikelDao = new BestelArtikelDAO2();
+
+        BestelArtikel bestelArtikel = new BestelArtikel();
+        bestelArtikel.setIdBestelling(idBestelling);
+      
+        Set<BestelArtikel> bestelArtikelen = bestelArtikelDao.readByIdBestelling(bestelArtikel);
+       
+        return bestelArtikelen;
+   
+    }
+    
+    public void updateBestelArtikel(int idBestelling, int idArtikel, int aantal){
+      
+        BestelArtikelDAO2 bestelArtikelDao = new BestelArtikelDAO2();
+
+        BestelArtikel bestelArtikel = new BestelArtikel();
+        bestelArtikel.setIdBestelling(idBestelling);
+        bestelArtikel.setIdArtikel(idArtikel);
+        bestelArtikel.setAantal(aantal);
+   
+        bestelArtikelDao.update(bestelArtikel);
+      
+  
+    }
+    
+    
 
    
-    // artikel acties <=
+    
+    
     
     
 }
