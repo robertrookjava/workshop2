@@ -14,7 +14,7 @@ import com.mycompany.mavenproject2.database.dao2.AccounttypeDAO2;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
-import com.mycompany.mavenproject2.database.Database;
+
 
 /**
  *
@@ -32,6 +32,9 @@ public class Model2 {
         accounttype.setTYpe("amin");
         
         accounttypeDao.create(accounttype);
+        
+        
+        
         
       
     }
