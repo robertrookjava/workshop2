@@ -5,6 +5,7 @@
  */
 package com.mycompany.mavenproject2;
 import com.mycompany.mavenproject2.model.Model;
+import com.mycompany.mavenproject2.model.Model2;
 import com.mycompany.mavenproject2.view.View;
 import com.mycompany.mavenproject2.database.ConnectionManager2;
 import com.mycompany.mavenproject2.controller.Controller;
@@ -45,7 +46,7 @@ public class Application {
         logger.warn("Hello World");
         logger.error("Hello World");
         
-        Model model = new Model();
+        Model2 model = new Model2();
         View view = new View ();
         Controller controller = new Controller (model, view);
         controller.run();   

@@ -12,6 +12,8 @@ import com.mycompany.mavenproject2.model.Bestelling;
 import com.mycompany.mavenproject2.model.Artikel;
 import com.mycompany.mavenproject2.view.View;
 import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 import java.math.BigDecimal;
 import com.mycompany.mavenproject2.database.StringToDatabase;
 
@@ -22,12 +24,12 @@ import com.mycompany.mavenproject2.database.StringToDatabase;
 public class Controller {
     
      
-    private Model model;
+    private Model2 model;
     private View view;
     private boolean exit = false;
     private StringToDatabase stringToDatabase = new StringToDatabase();
     
-    public Controller(Model model, View view) {
+    public Controller(Model2 model, View view) {
         this.model = model;
         this.view = view;
     }
@@ -38,8 +40,8 @@ public class Controller {
                      break;
             case "ma":  verwerkInput_ma();
                      break;
-            case "db":  verwerkInput_db();
-                     break;         
+            //case "db":  verwerkInput_db();
+            //         break;         
             case "a1":  verwerkInput_a1();
                      break;
             case "a2":  verwerkInput_a2();
@@ -101,7 +103,7 @@ public class Controller {
         view.printOutput("--------------------------");
     }
     
-    private void printArtikelen (Set<Artikel> artikelen){
+    private void printArtikelen (List<Artikel> artikelen){
         for (Artikel artikel : artikelen){
             printArtikel (artikel);
         }
@@ -118,7 +120,7 @@ public class Controller {
         view.printOutput("--------------------------");
     }
     
-    private void printKlanten (Set<Klant> klanten){
+    private void printKlanten (List<Klant> klanten){
         for (Klant klant : klanten){
             printKlant (klant);
         }
@@ -126,12 +128,12 @@ public class Controller {
     
     
     
-    private void verwerkInput_db(){
-        System.out.println("verwerk db");
-        view.menuDB();
-        String database = view.getUserInputDatabase(); 
-        model.setDatabase(stringToDatabase.toDatabase(database));
-    }
+   // private void verwerkInput_db(){
+   //     System.out.println("verwerk db");
+   //     view.menuDB();
+   //     String database = view.getUserInputDatabase(); 
+   //     model.setDatabase(stringToDatabase.toDatabase(database));
+   // }
     
     
     
@@ -161,13 +163,13 @@ public class Controller {
             naam = view.getUserInputNaam();
             exists = model.existsByNameArtikel(naam);
         }
-        Set<Artikel> artikelen = model.readByNameArtikel(naam);
+        List<Artikel> artikelen = model.readByNameArtikel(naam);
         printArtikelen (artikelen);
     }
     
     private void verwerkInput_a3(){
         System.out.println("verwerk a3");
-        Set<Artikel> artikelen = model.readAllArtikel();
+        List<Artikel> artikelen = model.readAllArtikel();
         printArtikelen (artikelen);
     }
     
@@ -249,14 +251,14 @@ public class Controller {
             achternaam = view.getUserInputAchternaam();
             exists = model.existsByAchternaamKlant(achternaam);
         }
-        Set<Klant> klanten = model.readByAchternaamKlant(achternaam);
+        List<Klant> klanten = model.readByAchternaamKlant(achternaam);
         printKlanten (klanten);
         
     }
     
     private void verwerkInput_k3(){
         System.out.println("verwerk k3");
-        Set<Klant> klanten = model.readAllKlant();
+        List<Klant> klanten = model.readAllKlant();
         printKlanten (klanten);
     }
     
@@ -452,14 +454,14 @@ public class Controller {
         
         // nu alle bestelling van deze klant laten zien
         
-        Set <Bestelling> bestellingen = model.readByIdKlantBestelling(idKlant);
+        List <Bestelling> bestellingen = model.readByIdKlantBestelling(idKlant);
         // nu voor elke bestelling alle bijbehorende bestelartikel record weergeven
         
         for (Bestelling bestelling: bestellingen){
             view.printOutput("idKlant ="+ bestelling.getIdKlant() );
             view.printOutput("idbestelling ="+ bestelling.getIdBestelling() );
             
-            Set <BestelArtikel> bestelArtikelen = model.readByIdBestellingBestelArtikel(bestelling.getIdBestelling());
+            List<BestelArtikel> bestelArtikelen = model.readByIdBestellingBestelArtikel(bestelling.getIdBestelling());
             // druk nu alle informatie af van de bijbehorende records van bestelartikel 
             for (BestelArtikel x: bestelArtikelen){
                 view.printOutput("");
@@ -483,7 +485,7 @@ public class Controller {
     public void run(){
         String userInput="";
         // eerste even vragen welke database je wil gebruiken
-        verwerkInput_db();
+        //verwerkInput_db();
         
         view.startScreen();
         view.menuScreen();
