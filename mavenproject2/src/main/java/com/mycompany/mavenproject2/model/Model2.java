@@ -14,6 +14,8 @@ import com.mycompany.mavenproject2.database.dao2.AccounttypeDAO2;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 
 /**
@@ -175,22 +177,22 @@ public class Model2 {
    
    
     
-    public Set<Artikel> readAllArtikel () {
+    public List<Artikel> readAllArtikel () {
 
         
         ArtikelDAO2 artikelDao = new ArtikelDAO2();
-        Set<Artikel> artikelen = artikelDao.readAll();
+        List<Artikel> artikelen = artikelDao.readAll();
        
         return artikelen;
    }
 
    
-    public Set <Artikel> readByNameArtikel (String naam) {
+    public List <Artikel> readByNameArtikel (String naam) {
         
         ArtikelDAO2 artikelDao = new ArtikelDAO2();
         Artikel artikel = new Artikel();
         artikel.setNaam(naam);
-        Set<Artikel> artikelen = artikelDao.readByNaam(artikel);
+        List<Artikel> artikelen = artikelDao.readByNaam(artikel);
         
         return artikelen;
        

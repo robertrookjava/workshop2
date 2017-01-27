@@ -12,6 +12,8 @@ import com.mycompany.mavenproject2.model.BestelArtikelPK;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 
 
 import java.io.Serializable;
@@ -26,6 +28,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import javax.persistence.TemporalType;
@@ -155,33 +158,37 @@ public class ArtikelDAO2 {
         
     }
     
-    public Set<Artikel> readAll(){
-        Set<Artikel> artikelen = new HashSet<>();
+    public List<Artikel> readAll(){
+        List<Artikel> artikelen = new ArrayList<>();
         EntityManager entityManager;
         
         entityManager = EntityManagerUtil.getEntityManager();
        //public Collection<Professor> findAllProfessors() {
        // Query query = em.createQuery("SELECT e FROM Professor e");
        // return (Collection<Professor>) query.getResultList();
+       
+        //TypedQuery<Artikel> query = entityManager.createQuery("select x from Artikel x where x.naam= :naamParam",Artikel.class);
+        //query.setParameter("naamParam",artikel.getNaam());
  
-        Query query = entityManager.createQuery("select x From Artikel x");
-        artikelen = (Set<Artikel>) query.getResultList();
+        TypedQuery<Artikel> query = entityManager.createQuery("select x From Artikel x",Artikel.class);
+        artikelen = (List<Artikel>) query.getResultList();
         
         
         return artikelen;
     }
     
-    public Set<Artikel> readByNaam(Artikel artikel){
-        Set<Artikel> artikelen = new HashSet<>();
+    public List<Artikel> readByNaam(Artikel artikel){
+        List<Artikel> artikelen = new ArrayList<>();
         
         EntityManager entityManager;
         
         entityManager = EntityManagerUtil.getEntityManager();
             
-        Query query = entityManager.createQuery("select x from Artikel x where x.naam= :naamParam");
+        //Query query = entityManager.createQuery("select x from Artikel x where x.naam= :naamParam");
+        TypedQuery<Artikel> query = entityManager.createQuery("select x from Artikel x where x.naam= :naamParam",Artikel.class);
         query.setParameter("naamParam",artikel.getNaam());
         
-        artikelen = (Set<Artikel>) query.getResultList();
+        artikelen =  query.getResultList();
         
         
         

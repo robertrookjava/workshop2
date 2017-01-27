@@ -64,13 +64,13 @@ public class Test {
     
     public static void test(){
          //testDatabaseConnection();
-         
+         //testMaakAccount();
          //testArtikelCreate();
          //testArtikelDelete();
          //testReadByArtikelID();
          //testUpdateArtikel();
          //testReadByNameArtikel();
-         //testReadAllArtikel();
+         testReadAllArtikel();
          
          //testCreateKlant();
          //testDeleteKlant();
@@ -121,7 +121,7 @@ public class Test {
     
     
 
-    public static void maakAccount(Database database){
+    public static void testMaakAccount(){
        
         
         Model2 model = new Model2();
@@ -391,7 +391,7 @@ public class Test {
         //System.out.println("Robert13");
         
         Model2 model = new Model2();
-        model.createArtikel("naam1", new BigDecimal (77.77), 10);
+        model.createArtikel("naam3", new BigDecimal (101.88), 40);
         
         
        
@@ -408,7 +408,7 @@ public class Test {
       
         //artikelDao.delete(artikel);
          Model2 model = new Model2();
-         model.deleteArtikel(7);
+         model.deleteArtikel(20);
      
     }
     
@@ -427,7 +427,7 @@ public class Test {
         //System.out.println(gevondenArtikel.getPrijs());
         //System.out.println(gevondenArtikel.getVoorraad());
         Model2 model = new Model2();
-        Artikel gevondenArtikel = model.readByIdArtikel(4);
+        Artikel gevondenArtikel = model.readByIdArtikel(7);
         System.out.println(gevondenArtikel.getNaam());
         System.out.println(gevondenArtikel.getPrijs());
         System.out.println(gevondenArtikel.getVoorraad());
@@ -445,7 +445,7 @@ public class Test {
 
         //artikelDao.update(artikel);
          Model2 model = new Model2();
-         model.updateArtikel(4, "nieuwe naam444", (new BigDecimal("56.78")), 444);
+         model.updateArtikel(7, "nieuwe naam777", (new BigDecimal("77.77")), 777);
     }
     
     public static void testReadAllArtikel (){
@@ -462,7 +462,7 @@ public class Test {
         //    System.out.println();
          Model2 model = new Model2();
          
-        Set<Artikel> artikelen = model.readAllArtikel();
+        List<Artikel> artikelen = model.readAllArtikel();
        
         for (Artikel x:artikelen){         
             System.out.println(x.getIdArtikel());
@@ -494,7 +494,7 @@ public class Test {
 
         //}
          Model2 model = new Model2();
-         Set<Artikel> artikelen = model.readByNameArtikel("naam5");
+         List<Artikel> artikelen = model.readByNameArtikel("naam3");
          for (Artikel x:artikelen){
             System.out.println("In de loop");
             System.out.println(x.getIdArtikel());
