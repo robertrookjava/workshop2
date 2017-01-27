@@ -9,10 +9,11 @@ import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import com.mycompany.mavenproject2.model.BestelArtikel;
 import com.mycompany.mavenproject2.model.BestelArtikelPK;
 import com.mycompany.mavenproject2.model.Bestelling;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -117,8 +118,8 @@ public class BestelArtikelDAO2 {
       
       // doen met BestelArtikelPK <-
       
-    public Set<BestelArtikel> readAll()   {
-        Set<BestelArtikel> bestelArtikelen = new HashSet<>();
+    public List<BestelArtikel> readAll()   {
+        List<BestelArtikel> bestelArtikelen = new ArrayList<>();
            
         EntityManager entityManager;
         
@@ -127,14 +128,14 @@ public class BestelArtikelDAO2 {
             // Query query = em.createQuery("SELECT e FROM Professor e");
             // return (Collection<Professor>) query.getResultList();
  
-        Query query = entityManager.createQuery("select x From BestelArtikel x");
-        bestelArtikelen = (Set<BestelArtikel>) query.getResultList();
+        TypedQuery<BestelArtikel> query = entityManager.createQuery("select x From BestelArtikel x",BestelArtikel.class);
+        bestelArtikelen = (List<BestelArtikel>) query.getResultList();
            
         return bestelArtikelen;
     }
        
-    public Set<BestelArtikel> readByIdBestelling (BestelArtikel bestelArtikel)  {
-        Set<BestelArtikel> bestelArtikelen = new HashSet<>();
+    public List<BestelArtikel> readByIdBestelling (BestelArtikel bestelArtikel)  {
+        List<BestelArtikel> bestelArtikelen = new ArrayList<>();
         int idBestelling = bestelArtikel.getIdBestelling();
            
         EntityManager entityManager;
@@ -144,9 +145,11 @@ public class BestelArtikelDAO2 {
             // Query query = em.createQuery("SELECT e FROM Professor e");
             // return (Collection<Professor>) query.getResultList();
  
-        Query query = entityManager.createQuery("select x From BestelArtikel x where x.bestelArtikelPK.idBestelling = :param");
+        TypedQuery<BestelArtikel>query = entityManager.createQuery("select x From BestelArtikel x where x.bestelArtikelPK.idBestelling = :param",BestelArtikel.class);
         query.setParameter("param", idBestelling);
-        bestelArtikelen = (Set<BestelArtikel>) query.getResultList();
+        bestelArtikelen = (List<BestelArtikel>) query.getResultList();
+        
+    
            
         return bestelArtikelen;
     }

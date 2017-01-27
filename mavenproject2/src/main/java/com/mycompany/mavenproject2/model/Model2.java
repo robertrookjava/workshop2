@@ -278,7 +278,7 @@ public class Model2 {
     public boolean existsBestelArtikelByIdArtikel (int idArtikel){
        
         ArtikelDAO2 artikelDao = new ArtikelDAO2();
-        Set<Artikel> artikelen = artikelDao.readAll();
+        List<Artikel> artikelen = artikelDao.readAll();
         Artikel artikel = new Artikel();
         artikel.setIdArtikel(idArtikel);
         boolean exists = artikelDao.existsBestelArtikelByIdArtikel(artikel);

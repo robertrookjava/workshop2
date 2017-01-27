@@ -8,10 +8,11 @@ package com.mycompany.mavenproject2.database.dao2;
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import com.mycompany.mavenproject2.model.Bestelling;
 import com.mycompany.mavenproject2.model.Klant;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -89,8 +90,8 @@ public class BestellingDAO2 {
         return exists;
     }
     
-    public Set<Bestelling> readAll()   {
-        Set<Bestelling> bestellingen = new HashSet<>();
+    public List<Bestelling> readAll()   {
+        List<Bestelling> bestellingen = new ArrayList<>();
         EntityManager entityManager;
         
         entityManager = EntityManagerUtil.getEntityManager();
@@ -98,25 +99,29 @@ public class BestellingDAO2 {
        // Query query = em.createQuery("SELECT e FROM Professor e");
        // return (Collection<Professor>) query.getResultList();
  
-        Query query = entityManager.createQuery("select x From Bestelling x");
-        bestellingen = (Set<Bestelling>) query.getResultList();
+        TypedQuery<Bestelling> query  = entityManager.createQuery("select x From Bestelling x",Bestelling.class);
+        bestellingen = (List<Bestelling>) query.getResultList();
         
+
         return bestellingen;
     }
     
-     public Set<Bestelling> readByIdKlant(Bestelling bestelling)  {
-        Set<Bestelling> bestellingen = new HashSet<>();
+     public List<Bestelling> readByIdKlant(Bestelling bestelling)  {
+        List<Bestelling> bestellingen = new ArrayList<>();
         int id = bestelling.getIdKlant();
         EntityManager entityManager;
         
         try{
             entityManager = EntityManagerUtil.getEntityManager();
             // String query = "SELECT * FROM Bestelling WHERE idKlant = ?";
-            Query query = entityManager.createQuery("SELECT b FROM Bestelling b WHERE b.idKlant = :param");
+            TypedQuery<Bestelling> query = entityManager.createQuery("SELECT b FROM Bestelling b WHERE b.idKlant = :param",Bestelling.class);
             query.setParameter("param", id);
-            bestellingen = (Set<Bestelling>) query.getResultList();
+            bestellingen = (List<Bestelling>) query.getResultList();
            // notFound = query.setMaxResults(1).getResultList().isEmpty();
            // exists = !notFound;
+           
+          
+         
             
             
         }catch(Exception e){
@@ -129,7 +134,7 @@ public class BestellingDAO2 {
      
      public boolean existsByIdKlant(Bestelling bestelling)  {
           boolean exists = false;
-          Set<Bestelling> bestellingen = readByIdKlant (bestelling);
+          List<Bestelling> bestellingen = readByIdKlant (bestelling);
           exists = !(bestellingen == null || bestellingen.isEmpty());
           
           
