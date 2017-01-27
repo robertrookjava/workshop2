@@ -190,7 +190,7 @@ public class Test {
 
         //}
         Model2 model = new Model2();
-        Set<Bestelling> bestellingen = model.readAllBestelling();
+        List<Bestelling> bestellingen = model.readAllBestelling();
         
        
         for (Bestelling x:bestellingen){         
@@ -222,7 +222,7 @@ public class Test {
 
         //}
         Model2 model = new Model2();
-        Set<Bestelling> bestellingen = model.readByIdKlantBestelling(5);
+        List<Bestelling> bestellingen = model.readByIdKlantBestelling(5);
         for (Bestelling x:bestellingen){
             System.out.println("In de loop");
             System.out.println(x.getIdBestelling());
@@ -305,7 +305,7 @@ public class Test {
 
         //}
         Model2 model = new Model2();
-        Set<BestelArtikel> bestelArtikelen = model.readAllBestelArtikel();
+        List<BestelArtikel> bestelArtikelen = model.readAllBestelArtikel();
 
         for (BestelArtikel x:bestelArtikelen){         
             System.out.println(x.getIdBestelling());
@@ -334,7 +334,7 @@ public class Test {
         //}
         Model2 model = new Model2();
         
-        Set<BestelArtikel> bestelArtikelen = model.readByIdBestellingBestelArtikel(5);
+        List<BestelArtikel> bestelArtikelen = model.readByIdBestellingBestelArtikel(5);
        
         for (BestelArtikel x:bestelArtikelen){         
             System.out.println(x.getIdBestelling());
@@ -602,7 +602,7 @@ public class Test {
         //}
          Model2 model = new Model2();
          
-        Set<Klant> klanten = model.readAllKlant();
+        List<Klant> klanten = model.readAllKlant();
        
         for (Klant x:klanten) {         
             System.out.println(x.getIdKlant());
@@ -636,7 +636,7 @@ public class Test {
         //}
         Model2 model = new Model2();
          
-        Set<Klant> klanten = model.readByAchternaamKlant("achternaam4");
+        List<Klant> klanten = model.readByAchternaamKlant("achternaam4");
         for (Klant x:klanten) {         
             System.out.println(x.getIdKlant());
             System.out.println(x.getVoornaam());

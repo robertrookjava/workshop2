@@ -51,7 +51,7 @@ public class BestellingDAO2 {
             
             entityManager= EntityManagerUtil.getEntityManager();
             entityManager.getTransaction().begin();
-            Bestelling gevondenBestelling = (Bestelling)entityManager.find(Bestelling.class, idBestelling);
+            Bestelling gevondenBestelling = entityManager.find(Bestelling.class, idBestelling);
             entityManager.remove(gevondenBestelling);
             entityManager.getTransaction().commit();
             
@@ -71,7 +71,7 @@ public class BestellingDAO2 {
         
         try{
             entityManager = EntityManagerUtil.getEntityManager();
-            gevondenBestelling = (Bestelling)entityManager.find(Bestelling.class, bestelling.getIdBestelling());
+            gevondenBestelling = entityManager.find(Bestelling.class, bestelling.getIdBestelling());
            
             
         }catch(Exception e){

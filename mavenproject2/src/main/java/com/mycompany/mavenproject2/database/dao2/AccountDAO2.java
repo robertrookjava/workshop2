@@ -46,7 +46,7 @@ public class AccountDAO2 {
         
         try{
             entityManager = EntityManagerUtil.getEntityManager();
-            gevondenAccount = (Account)entityManager.find(Account.class, account.getIdAccount());
+            gevondenAccount = entityManager.find(Account.class, account.getIdAccount());
            
             
         }catch(Exception e){

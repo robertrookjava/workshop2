@@ -47,7 +47,7 @@ public class KlantDAO2 {
             
             entityManager= EntityManagerUtil.getEntityManager();
             entityManager.getTransaction().begin();
-            Klant gevondenKlant = (Klant)entityManager.find(Klant.class, idKlant);
+            Klant gevondenKlant = entityManager.find(Klant.class, idKlant);
             entityManager.remove(gevondenKlant);
             entityManager.getTransaction().commit();
             
@@ -67,7 +67,7 @@ public class KlantDAO2 {
         
         try{
             entityManager = EntityManagerUtil.getEntityManager();
-            gevondenKlant = (Klant)entityManager.find(Klant.class, klant.getIdKlant());
+            gevondenKlant = entityManager.find(Klant.class, klant.getIdKlant());
            
             
         }catch(Exception e){

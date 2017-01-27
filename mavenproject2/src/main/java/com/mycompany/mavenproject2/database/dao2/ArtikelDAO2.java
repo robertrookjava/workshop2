@@ -66,7 +66,7 @@ public class ArtikelDAO2 {
             
             entityManager= EntityManagerUtil.getEntityManager();
             entityManager.getTransaction().begin();
-            Artikel gevondenArtikel = (Artikel)entityManager.find(Artikel.class, idArtikel);
+            Artikel gevondenArtikel = entityManager.find(Artikel.class, idArtikel);
             entityManager.remove(gevondenArtikel);
             entityManager.getTransaction().commit();
             
@@ -87,7 +87,7 @@ public class ArtikelDAO2 {
         
         try{
             entityManager = EntityManagerUtil.getEntityManager();
-            gevondenArtikel = (Artikel)entityManager.find(Artikel.class, artikel.getIdArtikel());
+            gevondenArtikel = entityManager.find(Artikel.class, artikel.getIdArtikel());
            
             
         }catch(Exception e){

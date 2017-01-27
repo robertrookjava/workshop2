@@ -5,6 +5,7 @@
  */
 package com.mycompany.mavenproject2.controller;
 import com.mycompany.mavenproject2.model.Model;
+import com.mycompany.mavenproject2.model.Model2;
 import com.mycompany.mavenproject2.model.Klant;
 import com.mycompany.mavenproject2.model.BestelArtikel;
 import com.mycompany.mavenproject2.model.Bestelling;

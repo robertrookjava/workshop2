@@ -187,7 +187,7 @@ public class Model2 {
    }
 
    
-    public List <Artikel> readByNameArtikel (String naam) {
+    public List<Artikel> readByNameArtikel (String naam) {
         
         ArtikelDAO2 artikelDao = new ArtikelDAO2();
         Artikel artikel = new Artikel();
@@ -301,23 +301,23 @@ public class Model2 {
  
     }
     
-    public Set<Klant> readAllKlant() {
+    public List<Klant> readAllKlant() {
         
         KlantDAO2 klantDao = new KlantDAO2();
-        Set<Klant> klanten = klantDao.readAll();
+        List<Klant> klanten = klantDao.readAll();
        
         return klanten;
 
 
     }
     
-    public Set<Klant> readByAchternaamKlant(String achternaam){
+    public List<Klant> readByAchternaamKlant(String achternaam){
         
         
         KlantDAO2 klantDao = new KlantDAO2();
         Klant klant = new Klant();
         klant.setAchternaam(achternaam);
-        Set<Klant> klanten = klantDao.readByAchternaamKlant(klant);
+        List<Klant> klanten = klantDao.readByAchternaamKlant(klant);
         
         return klanten;
      
@@ -392,22 +392,22 @@ public class Model2 {
     
     
     
-    public Set<Bestelling> readAllBestelling(){
+    public List<Bestelling> readAllBestelling(){
         
         BestellingDAO2 bestellingDao = new BestellingDAO2();
-        Set<Bestelling> bestellingen = bestellingDao.readAll();
+        List<Bestelling> bestellingen = bestellingDao.readAll();
        
         return bestellingen;
  
     }
     
-    public Set<Bestelling> readByIdKlantBestelling(int idKlant){
+    public List<Bestelling> readByIdKlantBestelling(int idKlant){
         
         
         BestellingDAO2 bestellingDao = new BestellingDAO2();
         Bestelling bestelling = new Bestelling();
         bestelling.setIdKlant(idKlant);
-        Set<Bestelling> bestellingen = bestellingDao.readByIdKlant(bestelling);
+        List<Bestelling> bestellingen = bestellingDao.readByIdKlant(bestelling);
         
         return bestellingen;
     }
@@ -479,23 +479,23 @@ public class Model2 {
   
     }
     
-    public Set<BestelArtikel> readAllBestelArtikel(){
+    public List<BestelArtikel> readAllBestelArtikel(){
        
         BestelArtikelDAO2 bestelArtikelDao = new BestelArtikelDAO2();
 
-        Set<BestelArtikel> bestelArtikelen = bestelArtikelDao.readAll();
+        List<BestelArtikel> bestelArtikelen = bestelArtikelDao.readAll();
 
         return bestelArtikelen;
     }
     
-    public Set<BestelArtikel> readByIdBestellingBestelArtikel(int idBestelling){
+    public List<BestelArtikel> readByIdBestellingBestelArtikel(int idBestelling){
         
         BestelArtikelDAO2 bestelArtikelDao = new BestelArtikelDAO2();
 
         BestelArtikel bestelArtikel = new BestelArtikel();
         bestelArtikel.setIdBestelling(idBestelling);
       
-        Set<BestelArtikel> bestelArtikelen = bestelArtikelDao.readByIdBestelling(bestelArtikel);
+        List<BestelArtikel> bestelArtikelen = bestelArtikelDao.readByIdBestelling(bestelArtikel);
        
         return bestelArtikelen;
    
