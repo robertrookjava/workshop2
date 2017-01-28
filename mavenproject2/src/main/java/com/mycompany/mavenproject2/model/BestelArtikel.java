@@ -30,6 +30,7 @@ public class BestelArtikel implements Serializable{
     private int aantal; 
     
     public BestelArtikel(){
+        bestelArtikelPK = new BestelArtikelPK();
     }
 
     public int getIdBestelling() {

@@ -104,12 +104,15 @@ public class Model2 {
     }
     
     public void deleteArtikel (int idArtikel){
+        boolean exists = existsByIdArtikel (idArtikel);
+        if (exists){
       
-        ArtikelDAO2 artikelDao = new ArtikelDAO2();
-        Artikel artikel = new Artikel();
-        artikel.setIdArtikel(idArtikel);
+            ArtikelDAO2 artikelDao = new ArtikelDAO2();
+            Artikel artikel = new Artikel();
+            artikel.setIdArtikel(idArtikel);
       
-        artikelDao.delete(artikel);
+            artikelDao.delete(artikel);
+        }
         
     }
     
@@ -230,11 +233,15 @@ public class Model2 {
       
     public void deleteKlant(int idKlant) {
         
-        KlantDAO2 klantDao = new KlantDAO2();
-        Klant klant = new Klant();
-        klant.setIdKlant(idKlant);
-       
-        klantDao.delete(klant);
+        boolean exists = existsByIDKlant(idKlant);
+        
+        if (exists){
+        
+            KlantDAO2 klantDao = new KlantDAO2();
+            Klant klant = new Klant();
+            klant.setIdKlant(idKlant);
+            klantDao.delete(klant);
+        }
 
     }
     

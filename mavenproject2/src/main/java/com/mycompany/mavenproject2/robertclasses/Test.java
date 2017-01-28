@@ -70,7 +70,7 @@ public class Test {
          //testReadByArtikelID();
          //testUpdateArtikel();
          //testReadByNameArtikel();
-         testReadAllArtikel();
+         //testReadAllArtikel();
          
          //testCreateKlant();
          //testDeleteKlant();
@@ -140,7 +140,7 @@ public class Test {
         //bestellingDao.create(bestelling);
         
         Model2 model = new Model2();
-        int idBestelling = model.createBestelling(6, 1);
+        int idBestelling = model.createBestelling(5, 1);
         System.out.println("Robert1: idBestelling = "+idBestelling);
         
  
@@ -153,7 +153,7 @@ public class Test {
         
         //bestellingDao.delete(bestelling);
         Model2 model = new Model2();
-        model.deleteBestelling(9);
+        model.deleteBestelling(3);
     }
     
     public static void testReadByIdBestelling(){
@@ -222,7 +222,7 @@ public class Test {
 
         //}
         Model2 model = new Model2();
-        List<Bestelling> bestellingen = model.readByIdKlantBestelling(5);
+        List<Bestelling> bestellingen = model.readByIdKlantBestelling(2);
         for (Bestelling x:bestellingen){
             System.out.println("In de loop");
             System.out.println(x.getIdBestelling());
@@ -246,7 +246,7 @@ public class Test {
 
         //bestellingDao.update(bestelling);
         Model2 model = new Model2();
-        model.updateBestelling(5, 4, 1);
+        model.updateBestelling(4, 6, 1);
     }
     
     public static void testCreateBestelArtikel(){
@@ -259,7 +259,7 @@ public class Test {
      
         //bestelArtikelDoa.create(bestelArtikel);
         Model2 model = new Model2();
-        model.createBestelArtikel(5, 5, 5);
+        model.createBestelArtikel(1, 15, 40);
     }
     
     public static void testDeleteBestelArtikel(){
@@ -271,7 +271,7 @@ public class Test {
      
         //bestelArtikelDoa.delete(bestelArtikel);
         Model2 model = new Model2();
-        model.deleteBestelArtikel(5, 5);
+        model.deleteBestelArtikel(1, 15);
     }
     
     public static void testReadByIdBestellingIdArtikel(){
@@ -285,7 +285,7 @@ public class Test {
         //System.out.println(gevondenBestelArtikel.getIdArtikel());
         //System.out.println(gevondenBestelArtikel.getAantal());
         Model2 model = new Model2();
-        BestelArtikel gevondenBestelArtikel= model.readByIdBestellingIdArtikel(5, 5);
+        BestelArtikel gevondenBestelArtikel= model.readByIdBestellingIdArtikel(4, 12);
         System.out.println(gevondenBestelArtikel.getIdBestelling());
         System.out.println(gevondenBestelArtikel.getIdArtikel());
         System.out.println(gevondenBestelArtikel.getAantal());
@@ -334,7 +334,7 @@ public class Test {
         //}
         Model2 model = new Model2();
         
-        List<BestelArtikel> bestelArtikelen = model.readByIdBestellingBestelArtikel(5);
+        List<BestelArtikel> bestelArtikelen = model.readByIdBestellingBestelArtikel(1);
        
         for (BestelArtikel x:bestelArtikelen){         
             System.out.println(x.getIdBestelling());
@@ -355,7 +355,7 @@ public class Test {
       
         //bestelArtikelDoa.update(bestelArtikel);
         Model2 model = new Model2();
-        model.updateBestelArtikel(2, 2, 5);
+        model.updateBestelArtikel(4, 12, 40);
   
     }
         
@@ -391,7 +391,7 @@ public class Test {
         //System.out.println("Robert13");
         
         Model2 model = new Model2();
-        model.createArtikel("naam3", new BigDecimal (101.88), 40);
+        model.createArtikel("naam5", new BigDecimal (66.66), 77);
         
         
        
@@ -408,7 +408,7 @@ public class Test {
       
         //artikelDao.delete(artikel);
          Model2 model = new Model2();
-         model.deleteArtikel(20);
+         model.deleteArtikel(14);
      
     }
     
@@ -427,7 +427,7 @@ public class Test {
         //System.out.println(gevondenArtikel.getPrijs());
         //System.out.println(gevondenArtikel.getVoorraad());
         Model2 model = new Model2();
-        Artikel gevondenArtikel = model.readByIdArtikel(7);
+        Artikel gevondenArtikel = model.readByIdArtikel(12);
         System.out.println(gevondenArtikel.getNaam());
         System.out.println(gevondenArtikel.getPrijs());
         System.out.println(gevondenArtikel.getVoorraad());
@@ -445,7 +445,7 @@ public class Test {
 
         //artikelDao.update(artikel);
          Model2 model = new Model2();
-         model.updateArtikel(7, "nieuwe naam777", (new BigDecimal("77.77")), 777);
+         model.updateArtikel(12, "nieuwe naam12", (new BigDecimal("12.12")), 12);
     }
     
     public static void testReadAllArtikel (){
@@ -494,7 +494,7 @@ public class Test {
 
         //}
          Model2 model = new Model2();
-         List<Artikel> artikelen = model.readByNameArtikel("naam3");
+         List<Artikel> artikelen = model.readByNameArtikel("naam5");
          for (Artikel x:artikelen){
             System.out.println("In de loop");
             System.out.println(x.getIdArtikel());
@@ -524,7 +524,7 @@ public class Test {
 
         //klantDao.create(klant);
          Model2 model = new Model2();
-         model.createKlant("voornaam6", "achternaam6", "tussenvoegse6", "telefoonnummer6", "emailadres6");
+         model.createKlant("voornaam11", "achternaam11", "tussenvoegsel11", "telefoonnummer11", "emailadres11");
     }
       
     public static void testDeleteKlant() {
@@ -534,7 +534,7 @@ public class Test {
        
         //klantDao.delete(klant);
         Model2 model = new Model2();
-        model.deleteKlant(7);
+        model.deleteKlant(4);
 
     }
     
@@ -556,7 +556,7 @@ public class Test {
         //System.out.println(gevondenKlant.getTelefoonnummer());
         //System.out.println(gevondenKlant.getEmailadres());
         Model2 model = new Model2();
-        Klant gevondenKlant = model.readByIDKlant(5);
+        Klant gevondenKlant = model.readByIDKlant(20);
 
         System.out.println(gevondenKlant.getVoornaam());
         System.out.println(gevondenKlant.getAchternaam());
@@ -636,7 +636,7 @@ public class Test {
         //}
         Model2 model = new Model2();
          
-        List<Klant> klanten = model.readByAchternaamKlant("achternaam4");
+        List<Klant> klanten = model.readByAchternaamKlant("achternaam20");
         for (Klant x:klanten) {         
             System.out.println(x.getIdKlant());
             System.out.println(x.getVoornaam());

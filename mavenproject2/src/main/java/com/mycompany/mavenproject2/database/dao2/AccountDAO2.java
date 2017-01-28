@@ -34,7 +34,9 @@ public class AccountDAO2 {
      
     public boolean bestaatAccount (Account account){
         boolean output = false;
-        
+        Account gevondenAccount = readByIdAccount (account);
+        output = (gevondenAccount != null);
+    
         return output;
     }
     
