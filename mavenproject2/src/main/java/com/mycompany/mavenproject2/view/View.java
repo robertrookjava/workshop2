@@ -127,7 +127,7 @@ public class View {
             inputOK = CheckFormat.isDatabase(userInput);
             if (!inputOK) {
                 printOutput("Voer a.u.b. een database in");
-            }
+           }
         }
         userInputDatabase=userInput;
         
@@ -311,7 +311,7 @@ public class View {
         System.out.println("");
         System.out.println("Toon menu - menu");
         System.out.println("Maak account - ma");
-        System.out.println("Kies database - db");
+        //System.out.println("Kies database - db");
         System.out.println("Afsluiten - exit");
         System.out.println("");
     }

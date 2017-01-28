@@ -23,7 +23,7 @@ import org.slf4j.LoggerFactory;
  */
 public class Application {
     
-    private static boolean test = true;
+    private static boolean test = false;
     
     public static void main(String[] args) {
       
