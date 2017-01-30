@@ -100,7 +100,7 @@ public class Model2 {
         artikel.setVoorraad(voorraad);
         
         artikelDao.create(artikel);
-        System.out.println("Robert1 "+artikel.getIdArtikel());
+        //System.out.println("Robert1 "+artikel.getIdArtikel());
     }
     
     public void deleteArtikel (int idArtikel){
