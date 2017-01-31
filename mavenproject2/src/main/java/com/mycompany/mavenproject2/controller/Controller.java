@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject2.controller;
-import com.mycompany.mavenproject2.model.Model;
 import com.mycompany.mavenproject2.model.Model2;
 import com.mycompany.mavenproject2.model.Klant;
 import com.mycompany.mavenproject2.model.BestelArtikel;
@@ -15,7 +14,7 @@ import java.util.Set;
 import java.util.List;
 import java.util.ArrayList;
 import java.math.BigDecimal;
-import com.mycompany.mavenproject2.database.StringToDatabase;
+
 
 /**
  *
@@ -27,7 +26,7 @@ public class Controller {
     private Model2 model;
     private View view;
     private boolean exit = false;
-    private StringToDatabase stringToDatabase = new StringToDatabase();
+   
     
     public Controller(Model2 model, View view) {
         this.model = model;

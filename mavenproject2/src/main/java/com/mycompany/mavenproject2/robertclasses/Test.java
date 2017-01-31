@@ -7,7 +7,7 @@
 
 package com.mycompany.mavenproject2.robertclasses;
 
-import com.mycompany.mavenproject2.database.Database;
+
 import com.mycompany.mavenproject2.database.dao2.*;
 
 import com.mycompany.mavenproject2.model.Artikel;

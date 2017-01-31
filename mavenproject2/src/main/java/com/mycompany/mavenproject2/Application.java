@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject2;
-import com.mycompany.mavenproject2.model.Model;
 import com.mycompany.mavenproject2.model.Model2;
 import com.mycompany.mavenproject2.view.View;
-import com.mycompany.mavenproject2.database.ConnectionManager2;
 import com.mycompany.mavenproject2.controller.Controller;
 import java.math.BigDecimal;
 import java.sql.*;
