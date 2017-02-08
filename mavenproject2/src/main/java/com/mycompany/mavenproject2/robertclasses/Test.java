@@ -8,7 +8,6 @@
 package com.mycompany.mavenproject2.robertclasses;
 
 
-import com.mycompany.mavenproject2.database.dao2.*;
 
 import com.mycompany.mavenproject2.model.Artikel;
 
@@ -19,7 +18,7 @@ import com.mycompany.mavenproject2.model.Bestelling;
 import com.mycompany.mavenproject2.model.Account;
 import com.mycompany.mavenproject2.model.Accounttype;
 import com.mycompany.mavenproject2.model.BestelArtikel;
-import com.mycompany.mavenproject2.model.Model2;
+import com.mycompany.mavenproject2.model.Model;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -124,7 +123,7 @@ public class Test {
     public static void testMaakAccount(){
        
         
-        Model2 model = new Model2();
+        Model model = new Model();
         model.maakAccount();
      }
      
@@ -139,7 +138,7 @@ public class Test {
       
         //bestellingDao.create(bestelling);
         
-        Model2 model = new Model2();
+        Model model = new Model();
         int idBestelling = model.createBestelling(5, 1);
         System.out.println("Robert1: idBestelling = "+idBestelling);
         
@@ -152,7 +151,7 @@ public class Test {
        //bestelling.setIdBestelling(9);
         
         //bestellingDao.delete(bestelling);
-        Model2 model = new Model2();
+        Model model = new Model();
         model.deleteBestelling(3);
     }
     
@@ -167,7 +166,7 @@ public class Test {
         //System.out.println(gevondenBestelling.getIdKlant());
         //System.out.println(gevondenBestelling.getDatum_Bestelling());
         //System.out.println(gevondenBestelling.getIdAccount());
-        Model2 model = new Model2();
+        Model model = new Model();
         Bestelling gevondenBestelling = model.readByIdBestelling(4);
         System.out.println(gevondenBestelling.getIdKlant());
         System.out.println(gevondenBestelling.getDatum_Bestelling());
@@ -189,7 +188,7 @@ public class Test {
             //System.out.println();
 
         //}
-        Model2 model = new Model2();
+        Model model = new Model();
         List<Bestelling> bestellingen = model.readAllBestelling();
         
        
@@ -221,7 +220,7 @@ public class Test {
             //System.out.println();
 
         //}
-        Model2 model = new Model2();
+        Model model = new Model();
         List<Bestelling> bestellingen = model.readByIdKlantBestelling(2);
         for (Bestelling x:bestellingen){
             System.out.println("In de loop");
@@ -245,7 +244,7 @@ public class Test {
         //bestelling.setIdAccount(1);
 
         //bestellingDao.update(bestelling);
-        Model2 model = new Model2();
+        Model model = new Model();
         model.updateBestelling(4, 6, 1);
     }
     
@@ -258,7 +257,7 @@ public class Test {
         
      
         //bestelArtikelDoa.create(bestelArtikel);
-        Model2 model = new Model2();
+        Model model = new Model();
         model.createBestelArtikel(1, 15, 40);
     }
     
@@ -270,7 +269,7 @@ public class Test {
         
      
         //bestelArtikelDoa.delete(bestelArtikel);
-        Model2 model = new Model2();
+        Model model = new Model();
         model.deleteBestelArtikel(1, 15);
     }
     
@@ -284,7 +283,7 @@ public class Test {
         //System.out.println(gevondenBestelArtikel.getIdBestelling());
         //System.out.println(gevondenBestelArtikel.getIdArtikel());
         //System.out.println(gevondenBestelArtikel.getAantal());
-        Model2 model = new Model2();
+        Model model = new Model();
         BestelArtikel gevondenBestelArtikel= model.readByIdBestellingIdArtikel(4, 12);
         System.out.println(gevondenBestelArtikel.getIdBestelling());
         System.out.println(gevondenBestelArtikel.getIdArtikel());
@@ -304,7 +303,7 @@ public class Test {
             //System.out.println();
 
         //}
-        Model2 model = new Model2();
+        Model model = new Model();
         List<BestelArtikel> bestelArtikelen = model.readAllBestelArtikel();
 
         for (BestelArtikel x:bestelArtikelen){         
@@ -332,7 +331,7 @@ public class Test {
             //System.out.println();
 
         //}
-        Model2 model = new Model2();
+        Model model = new Model();
         
         List<BestelArtikel> bestelArtikelen = model.readByIdBestellingBestelArtikel(1);
        
@@ -354,7 +353,7 @@ public class Test {
         
       
         //bestelArtikelDoa.update(bestelArtikel);
-        Model2 model = new Model2();
+        Model model = new Model();
         model.updateBestelArtikel(4, 12, 40);
   
     }
@@ -390,7 +389,7 @@ public class Test {
         //entityManagerFactory.close( );
         //System.out.println("Robert13");
         
-        Model2 model = new Model2();
+        Model model = new Model();
         model.createArtikel("naam5", new BigDecimal (66.66), 77);
         
         
@@ -407,7 +406,7 @@ public class Test {
         //artikel.setIdArtikel(7);
       
         //artikelDao.delete(artikel);
-         Model2 model = new Model2();
+         Model model = new Model();
          model.deleteArtikel(14);
      
     }
@@ -426,7 +425,7 @@ public class Test {
         //System.out.println(gevondenArtikel.getNaam());
         //System.out.println(gevondenArtikel.getPrijs());
         //System.out.println(gevondenArtikel.getVoorraad());
-        Model2 model = new Model2();
+        Model model = new Model();
         Artikel gevondenArtikel = model.readByIdArtikel(12);
         System.out.println(gevondenArtikel.getNaam());
         System.out.println(gevondenArtikel.getPrijs());
@@ -444,7 +443,7 @@ public class Test {
         //artikel.setVoorraad(444);
 
         //artikelDao.update(artikel);
-         Model2 model = new Model2();
+         Model model = new Model();
          model.updateArtikel(12, "nieuwe naam12", (new BigDecimal("12.12")), 12);
     }
     
@@ -460,7 +459,7 @@ public class Test {
         //    System.out.println(x.getPrijs());
         //    System.out.println(x.getVoorraad());
         //    System.out.println();
-         Model2 model = new Model2();
+         Model model = new Model();
          
         List<Artikel> artikelen = model.readAllArtikel();
        
@@ -493,7 +492,7 @@ public class Test {
          //   System.out.println();
 
         //}
-         Model2 model = new Model2();
+         Model model = new Model();
          List<Artikel> artikelen = model.readByNameArtikel("naam5");
          for (Artikel x:artikelen){
             System.out.println("In de loop");
@@ -523,7 +522,7 @@ public class Test {
         //klant.setEmailadres("emailadres6");
 
         //klantDao.create(klant);
-         Model2 model = new Model2();
+         Model model = new Model();
          model.createKlant("voornaam11", "achternaam11", "tussenvoegsel11", "telefoonnummer11", "emailadres11");
     }
       
@@ -533,7 +532,7 @@ public class Test {
         //klant.setIdKlant(7);
        
         //klantDao.delete(klant);
-        Model2 model = new Model2();
+        Model model = new Model();
         model.deleteKlant(4);
 
     }
@@ -555,7 +554,7 @@ public class Test {
         //System.out.println(gevondenKlant.getTussenvoegsel());
         //System.out.println(gevondenKlant.getTelefoonnummer());
         //System.out.println(gevondenKlant.getEmailadres());
-        Model2 model = new Model2();
+        Model model = new Model();
         Klant gevondenKlant = model.readByIDKlant(20);
 
         System.out.println(gevondenKlant.getVoornaam());
@@ -580,7 +579,7 @@ public class Test {
         
     
         //klantDao.update(klant);
-         Model2 model = new Model2();
+         Model model = new Model();
          model.updateKlant(5, "voornaam55", "achternaam55", "tussenvoegse55", "telefoonnummer55", "emailadres55");
  
     }
@@ -600,7 +599,7 @@ public class Test {
            // System.out.println(x.getEmailadres());    
             //System.out.println();
         //}
-         Model2 model = new Model2();
+         Model model = new Model();
          
         List<Klant> klanten = model.readAllKlant();
        
@@ -634,7 +633,7 @@ public class Test {
            // System.out.println();
 
         //}
-        Model2 model = new Model2();
+        Model model = new Model();
          
         List<Klant> klanten = model.readByAchternaamKlant("achternaam20");
         for (Klant x:klanten) {         

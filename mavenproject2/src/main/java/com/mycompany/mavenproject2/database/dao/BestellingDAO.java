@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject2.database.dao2;
+package com.mycompany.mavenproject2.database.dao;
 
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import com.mycompany.mavenproject2.model.Bestelling;
@@ -18,7 +18,7 @@ import javax.persistence.TypedQuery;
  *
  * @author robertrook
  */
-public class BestellingDAO2 {
+public class BestellingDAO {
     
     public int create(Bestelling bestelling)   { // geeft de idBestelling (auto increment) terug
         int idBestelling = 0;

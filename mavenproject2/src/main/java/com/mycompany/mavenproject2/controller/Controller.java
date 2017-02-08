@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject2.controller;
-import com.mycompany.mavenproject2.model.Model2;
+import com.mycompany.mavenproject2.model.Model;
 import com.mycompany.mavenproject2.model.Klant;
 import com.mycompany.mavenproject2.model.BestelArtikel;
 import com.mycompany.mavenproject2.model.Bestelling;
@@ -23,12 +23,12 @@ import java.math.BigDecimal;
 public class Controller {
     
      
-    private Model2 model;
+    private Model model;
     private View view;
     private boolean exit = false;
    
     
-    public Controller(Model2 model, View view) {
+    public Controller(Model model, View view) {
         this.model = model;
         this.view = view;
     }

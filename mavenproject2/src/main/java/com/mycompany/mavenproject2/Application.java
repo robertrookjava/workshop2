@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject2;
-import com.mycompany.mavenproject2.model.Model2;
+import com.mycompany.mavenproject2.model.Model;
 import com.mycompany.mavenproject2.view.View;
 import com.mycompany.mavenproject2.controller.Controller;
 import java.math.BigDecimal;
@@ -44,7 +44,7 @@ public class Application {
         logger.warn("Hello World");
         logger.error("Hello World");
         
-        Model2 model = new Model2();
+        Model model = new Model();
         View view = new View ();
         Controller controller = new Controller (model, view);
         controller.run();   

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject2.database.dao2;
+package com.mycompany.mavenproject2.database.dao;
 
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import com.mycompany.mavenproject2.model.Account;
@@ -13,7 +13,7 @@ import javax.persistence.EntityManager;
  *
  * @author robertrook
  */
-public class AccountDAO2 {
+public class AccountDAO {
     
     public void create(Account account){
         EntityManager entityManager = null;

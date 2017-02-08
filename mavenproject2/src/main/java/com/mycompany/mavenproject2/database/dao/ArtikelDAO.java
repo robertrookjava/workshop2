@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject2.database.dao2;
+package com.mycompany.mavenproject2.database.dao;
 
 import com.mycompany.mavenproject2.model.Artikel;
 import com.mycompany.mavenproject2.model.BestelArtikel;
@@ -37,7 +37,7 @@ import javax.persistence.TemporalType;
  *
  * @author robertrook
  */
-public class ArtikelDAO2 {
+public class ArtikelDAO {
     
     public void create(Artikel artikel){
         EntityManager entityManager = null;

@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject2.database.dao2;
+package com.mycompany.mavenproject2.database.dao;
 
 /**
  *
  * @author robertrook
  */
-public class Klant_heeft_adresDAO2 {
+public class Adres_typeDAO {
     
 }
