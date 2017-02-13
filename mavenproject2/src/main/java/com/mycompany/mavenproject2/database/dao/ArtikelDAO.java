@@ -79,7 +79,7 @@ public class ArtikelDAO {
         
     
     
-    public Artikel readByIdArtikel (Artikel artikel){
+    public Artikel read (Artikel artikel){
         Artikel gevondenArtikel = new Artikel();
         
         EntityManager entityManager;
@@ -101,7 +101,7 @@ public class ArtikelDAO {
     
     public boolean existsByIdArtikel (Artikel artikel){
         
-        Artikel gevondenArtikel = readByIdArtikel (artikel);
+        Artikel gevondenArtikel = read (artikel);
         boolean exists = (gevondenArtikel != null);
         return exists;
         

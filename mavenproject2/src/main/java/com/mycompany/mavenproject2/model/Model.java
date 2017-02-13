@@ -121,7 +121,7 @@ public class Model {
         ArtikelDAO artikelDao = new ArtikelDAO();
         Artikel artikel = new Artikel();
         artikel.setIdArtikel(idArtikel);
-        Artikel gevondenArtikel = artikelDao.readByIdArtikel(artikel);
+        Artikel gevondenArtikel = artikelDao.read(artikel);
   
         return gevondenArtikel;
     }
@@ -253,7 +253,7 @@ public class Model {
         Klant klant = new Klant();
         klant.setIdKlant(idKlant);
     
-        Klant gevondenKlant = klantDao.readByIdKLant(klant);
+        Klant gevondenKlant = klantDao.read(klant);
 
         return gevondenKlant;
    
@@ -378,7 +378,7 @@ public class Model {
         BestellingDAO bestellingDao = new BestellingDAO();
         Bestelling bestelling = new Bestelling();
         bestelling.setIdBestelling(idBestelling);
-        Bestelling gevondenBestelling = bestellingDao.readByIdBestelling(bestelling);
+        Bestelling gevondenBestelling = bestellingDao.read(bestelling);
 
         return gevondenBestelling;
      
@@ -466,7 +466,7 @@ public class Model {
         bestelArtikel.setIdBestelling(idBestelling);
         bestelArtikel.setIdArtikel(idArtikel);
         
-        BestelArtikel gevondenBestelArtikel=bestelArtikelDao.readByIdBestellingIdArtikel(bestelArtikel);
+        BestelArtikel gevondenBestelArtikel=bestelArtikelDao.read(bestelArtikel);
         
         return gevondenBestelArtikel;
   

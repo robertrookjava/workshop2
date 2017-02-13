@@ -58,7 +58,7 @@ public class KlantDAO {
          
     }
      
-    public Klant readByIdKLant (Klant klant){
+    public Klant read (Klant klant){
           
         Klant gevondenKlant = new Klant();
         
@@ -80,7 +80,7 @@ public class KlantDAO {
         boolean exists = false;
         
         
-        Klant gevondenKlant = readByIdKLant (klant);
+        Klant gevondenKlant = read (klant);
         exists = (gevondenKlant != null);
         return exists;
            

@@ -63,7 +63,7 @@ public class BestellingDAO {
     }
     
     
-    public Bestelling readByIdBestelling (Bestelling bestelling)  {
+    public Bestelling read (Bestelling bestelling)  {
         Bestelling gevondenBestelling = new Bestelling();
         
         EntityManager entityManager;
@@ -84,7 +84,7 @@ public class BestellingDAO {
     public boolean existsByIdBestelling (Bestelling bestelling){
         boolean exists = false;
         
-        Bestelling gevondenBestelling = readByIdBestelling (bestelling);
+        Bestelling gevondenBestelling = read (bestelling);
         exists = (gevondenBestelling != null);
         
         return exists;

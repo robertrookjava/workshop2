@@ -75,7 +75,7 @@ public class BestelArtikelDAO {
          
     }
      
-    public BestelArtikel readByIdBestellingIdArtikel (BestelArtikel bestelArtikel) {
+    public BestelArtikel read (BestelArtikel bestelArtikel) {
         EntityManager entityManager = null;
         
         BestelArtikel gevondenBestelArtikel = new BestelArtikel();
@@ -110,7 +110,7 @@ public class BestelArtikelDAO {
           
         boolean exists = false;
           
-        BestelArtikel gevondenBestelArtikel = readByIdBestellingIdArtikel (bestelArtikel);
+        BestelArtikel gevondenBestelArtikel = read (bestelArtikel);
         exists = (gevondenBestelArtikel != null);
           
           return exists;
