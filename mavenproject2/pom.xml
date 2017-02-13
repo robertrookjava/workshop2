@@ -107,6 +107,21 @@
     <artifactId>spring-core</artifactId>
     <version>4.3.6.RELEASE</version>
 </dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-aop</artifactId>
+    <version>4.3.6.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-webmvc</artifactId>
+    <version>4.3.6.RELEASE</version>
+</dependency>
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-web</artifactId>
+    <version>4.3.6.RELEASE</version>
+</dependency>
 
     </dependencies>
     <name>Workshop2_robert</name>

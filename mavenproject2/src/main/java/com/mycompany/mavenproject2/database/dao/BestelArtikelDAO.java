@@ -15,11 +15,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import com.mycompany.mavenproject2.database.daointerface.BestelArtikelDAOInterface;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author robertrook
  */
+@Component
 public class BestelArtikelDAO implements BestelArtikelDAOInterface {
     
     @Override

@@ -9,11 +9,16 @@ import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import com.mycompany.mavenproject2.model.Account;
 import javax.persistence.EntityManager;
 import com.mycompany.mavenproject2.database.daointerface.AccountDAOInterface;
-
+import org.springframework.context.*;
+import org.springframework.stereotype.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 /**
  *
  * @author robertrook
  */
+@Component
 public class AccountDAO implements AccountDAOInterface {
     
     @Override

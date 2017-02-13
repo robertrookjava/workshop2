@@ -14,11 +14,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import com.mycompany.mavenproject2.database.daointerface.BestellingDAOInterface;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author robertrook
  */
+@Component
 public class BestellingDAO implements BestellingDAOInterface {
     
     @Override

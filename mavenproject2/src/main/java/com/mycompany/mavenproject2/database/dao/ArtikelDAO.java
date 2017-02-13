@@ -33,11 +33,13 @@ import javax.persistence.TypedQuery;
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import javax.persistence.TemporalType;
 import com.mycompany.mavenproject2.database.daointerface.ArtikelDAOInterface;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author robertrook
  */
+@Component
 public class ArtikelDAO implements ArtikelDAOInterface {
     
     @Override

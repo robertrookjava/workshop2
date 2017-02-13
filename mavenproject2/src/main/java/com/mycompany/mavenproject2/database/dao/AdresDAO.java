@@ -5,11 +5,13 @@
  */
 package com.mycompany.mavenproject2.database.dao;
 import com.mycompany.mavenproject2.database.daointerface.AdresDAOInterface;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author robertrook
  */
+@Component
 public class AdresDAO implements AdresDAOInterface{
     
 }
