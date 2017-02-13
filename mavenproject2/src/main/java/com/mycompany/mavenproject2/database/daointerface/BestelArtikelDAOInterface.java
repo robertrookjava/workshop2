@@ -5,7 +5,7 @@
  */
 package com.mycompany.mavenproject2.database.daointerface;
 
-import com.mycompany.mavenproject2.model.BestelArtikel;
+import com.mycompany.mavenproject2.pojo.BestelArtikel;
 import java.util.List;
 
 /**

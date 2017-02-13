@@ -6,8 +6,8 @@
 package com.mycompany.mavenproject2.database.dao;
 
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
-import com.mycompany.mavenproject2.model.Bestelling;
-import com.mycompany.mavenproject2.model.Klant;
+import com.mycompany.mavenproject2.pojo.Bestelling;
+import com.mycompany.mavenproject2.pojo.Klant;
 import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.EntityManager;

@@ -9,15 +9,12 @@ package com.mycompany.mavenproject2.robertclasses;
 
 
 
-import com.mycompany.mavenproject2.model.Artikel;
-
-import com.mycompany.mavenproject2.model.Klant;
-
-import com.mycompany.mavenproject2.model.Bestelling;
-
-import com.mycompany.mavenproject2.model.Account;
-import com.mycompany.mavenproject2.model.Accounttype;
-import com.mycompany.mavenproject2.model.BestelArtikel;
+import com.mycompany.mavenproject2.pojo.Artikel;
+import com.mycompany.mavenproject2.pojo.Klant;
+import com.mycompany.mavenproject2.pojo.Bestelling;
+import com.mycompany.mavenproject2.pojo.Account;
+import com.mycompany.mavenproject2.pojo.Accounttype;
+import com.mycompany.mavenproject2.pojo.BestelArtikel;
 import com.mycompany.mavenproject2.model.Model;
 
 import java.io.Serializable;

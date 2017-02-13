@@ -5,9 +5,9 @@
  */
 package com.mycompany.mavenproject2.database.dao;
 
-import com.mycompany.mavenproject2.model.Artikel;
-import com.mycompany.mavenproject2.model.BestelArtikel;
-import com.mycompany.mavenproject2.model.BestelArtikelPK;
+import com.mycompany.mavenproject2.pojo.Artikel;
+import com.mycompany.mavenproject2.pojo.BestelArtikel;
+import com.mycompany.mavenproject2.pojo.BestelArtikelPK;
 
 
 import java.util.HashSet;

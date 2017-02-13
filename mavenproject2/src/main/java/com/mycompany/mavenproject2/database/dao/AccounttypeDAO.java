@@ -6,7 +6,7 @@
 package com.mycompany.mavenproject2.database.dao;
 
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
-import com.mycompany.mavenproject2.model.Accounttype;
+import com.mycompany.mavenproject2.pojo.Accounttype;
 import javax.persistence.EntityManager;
 import com.mycompany.mavenproject2.database.daointerface.AccounttypeDAOInterface;
 import org.springframework.stereotype.Component;

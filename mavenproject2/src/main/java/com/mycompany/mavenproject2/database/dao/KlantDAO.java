@@ -6,19 +6,21 @@
 package com.mycompany.mavenproject2.database.dao;
 
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
-import com.mycompany.mavenproject2.model.Bestelling;
-import com.mycompany.mavenproject2.model.Klant;
+import com.mycompany.mavenproject2.pojo.Bestelling;
+import com.mycompany.mavenproject2.pojo.Klant;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import com.mycompany.mavenproject2.database.daointerface.KlantDAOInterface;
+import org.springframework.stereotype.Component;
 
 /**
  *
  * @author robertrook
  */
+@Component
 public class KlantDAO implements KlantDAOInterface {
     
     @Override

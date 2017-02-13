@@ -6,9 +6,9 @@
 package com.mycompany.mavenproject2.database.dao;
 
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
-import com.mycompany.mavenproject2.model.BestelArtikel;
-import com.mycompany.mavenproject2.model.BestelArtikelPK;
-import com.mycompany.mavenproject2.model.Bestelling;
+import com.mycompany.mavenproject2.pojo.BestelArtikel;
+import com.mycompany.mavenproject2.pojo.BestelArtikelPK;
+import com.mycompany.mavenproject2.pojo.Bestelling;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;

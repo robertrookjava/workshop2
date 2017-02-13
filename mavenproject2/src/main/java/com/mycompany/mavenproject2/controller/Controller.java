@@ -5,10 +5,10 @@
  */
 package com.mycompany.mavenproject2.controller;
 import com.mycompany.mavenproject2.model.Model;
-import com.mycompany.mavenproject2.model.Klant;
-import com.mycompany.mavenproject2.model.BestelArtikel;
-import com.mycompany.mavenproject2.model.Bestelling;
-import com.mycompany.mavenproject2.model.Artikel;
+import com.mycompany.mavenproject2.pojo.Klant;
+import com.mycompany.mavenproject2.pojo.BestelArtikel;
+import com.mycompany.mavenproject2.pojo.Bestelling;
+import com.mycompany.mavenproject2.pojo.Artikel;
 import com.mycompany.mavenproject2.view.View;
 import java.util.Set;
 import java.util.List;

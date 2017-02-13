@@ -3,15 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject2.database.daointerface;
-
-import com.mycompany.mavenproject2.pojo.Accounttype;
+package com.mycompany.mavenproject2.modelinterface;
 
 /**
  *
  * @author robertrook
  */
-public interface AccounttypeDAOInterface {
-    void create(Accounttype accounttype);
+public interface AccountModelInterface {
     
+ 
+    void maakAccount();
+       
+   
 }

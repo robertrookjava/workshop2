@@ -5,8 +5,8 @@
  */
 package com.mycompany.mavenproject2.database.daointerface;
 
-import com.mycompany.mavenproject2.model.Bestelling;
-import com.mycompany.mavenproject2.model.Klant;
+import com.mycompany.mavenproject2.pojo.Bestelling;
+import com.mycompany.mavenproject2.pojo.Klant;
 import java.util.List;
 
 /**

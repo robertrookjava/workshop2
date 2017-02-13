@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject2.database.daointerface;
-import com.mycompany.mavenproject2.model.Account;
+import com.mycompany.mavenproject2.pojo.Account;
 /**
  *
  * @author robertrook
