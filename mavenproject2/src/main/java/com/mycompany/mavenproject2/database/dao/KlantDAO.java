@@ -13,13 +13,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import com.mycompany.mavenproject2.database.daointerface.KlantDAOInterface;
 
 /**
  *
  * @author robertrook
  */
-public class KlantDAO {
+public class KlantDAO implements KlantDAOInterface {
     
+    @Override
     public void create(Klant klant){
         EntityManager entityManager = null;
         
@@ -37,6 +39,7 @@ public class KlantDAO {
         
     }
     
+    @Override
     public void delete(Klant klant){
         EntityManager entityManager = null;
         
@@ -58,6 +61,7 @@ public class KlantDAO {
          
     }
      
+    @Override
     public Klant read (Klant klant){
           
         Klant gevondenKlant = new Klant();
@@ -76,6 +80,7 @@ public class KlantDAO {
         return gevondenKlant;
     }
       
+    @Override
     public Boolean existsByIdKLant (Klant klant){
         boolean exists = false;
         
@@ -87,6 +92,7 @@ public class KlantDAO {
         
     }
        
+    @Override
     public List<Bestelling> readByIdKlant(Klant klant){
         List<Bestelling> bestellingen = new ArrayList<>();
         int id = klant.getIdKlant();
@@ -115,6 +121,7 @@ public class KlantDAO {
         return bestellingen;
     }
         
+    @Override
     public boolean existsBestellingByIdKlant(Klant klant){
         boolean exists = false;
         List<Bestelling> bestellingen = readByIdKlant (klant);
@@ -123,6 +130,7 @@ public class KlantDAO {
         return exists;
     }
          
+    @Override
     public List<Klant> readAll(){
         List<Klant> klanten = new ArrayList<>();
         EntityManager entityManager;
@@ -140,6 +148,7 @@ public class KlantDAO {
         return klanten;
     }
          
+    @Override
     public List<Klant> readByAchternaamKlant(Klant klant){
         List<Klant> klanten = new ArrayList<>();
         
@@ -155,6 +164,7 @@ public class KlantDAO {
         return klanten;
     }
          
+    @Override
     public boolean existsByAchternaamKlant(Klant klant){
        boolean exists = false;
        List<Klant> klanten = readByAchternaamKlant (klant);
@@ -163,6 +173,7 @@ public class KlantDAO {
        return exists;
     }
          
+    @Override
     public void update(Klant klant){
         EntityManager entityManager = null;
         

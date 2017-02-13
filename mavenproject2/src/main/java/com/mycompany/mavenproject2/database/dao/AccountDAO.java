@@ -8,13 +8,15 @@ package com.mycompany.mavenproject2.database.dao;
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import com.mycompany.mavenproject2.model.Account;
 import javax.persistence.EntityManager;
+import com.mycompany.mavenproject2.database.daointerface.AccountDAOInterface;
 
 /**
  *
  * @author robertrook
  */
-public class AccountDAO {
+public class AccountDAO implements AccountDAOInterface {
     
+    @Override
     public void create(Account account){
         EntityManager entityManager = null;
         
@@ -32,15 +34,17 @@ public class AccountDAO {
         
     }
      
+    @Override
     public boolean bestaatAccount (Account account){
         boolean output = false;
-        Account gevondenAccount = readByIdAccount (account);
+        Account gevondenAccount = read (account);
         output = (gevondenAccount != null);
     
         return output;
     }
     
-    public Account readByIdAccount (Account account){
+    @Override
+    public Account read(Account account){
         Account gevondenAccount = new Account();
         
         EntityManager entityManager;
@@ -60,9 +64,10 @@ public class AccountDAO {
     
     }
     
+    @Override
     public boolean existsByIdAccount (Account account){
         
-        Account gevondenAccount = readByIdAccount (account);
+        Account gevondenAccount = read (account);
         boolean exists = (gevondenAccount != null);
         return exists;
         

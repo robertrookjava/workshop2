@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mycompany.mavenproject2.database.dao;
-import com.mycompany.mavenproject2.database.daointerface.AdresDAOInterface;
+package com.mycompany.mavenproject2.database.daointerface;
 
 /**
  *
  * @author robertrook
  */
-public class AdresDAO implements AdresDAOInterface{
+public interface Klant_heeft_adresDAOInterface {
     
 }

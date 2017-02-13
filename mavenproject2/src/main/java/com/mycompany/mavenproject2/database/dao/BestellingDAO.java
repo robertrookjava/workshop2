@@ -13,13 +13,15 @@ import java.util.ArrayList;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import com.mycompany.mavenproject2.database.daointerface.BestellingDAOInterface;
 
 /**
  *
  * @author robertrook
  */
-public class BestellingDAO {
+public class BestellingDAO implements BestellingDAOInterface {
     
+    @Override
     public int create(Bestelling bestelling)   { // geeft de idBestelling (auto increment) terug
         int idBestelling = 0;
         
@@ -41,6 +43,7 @@ public class BestellingDAO {
         return idBestelling;
     }
     
+    @Override
     public void delete(Bestelling bestelling){
         EntityManager entityManager = null;
         
@@ -63,6 +66,7 @@ public class BestellingDAO {
     }
     
     
+    @Override
     public Bestelling read (Bestelling bestelling)  {
         Bestelling gevondenBestelling = new Bestelling();
         
@@ -81,6 +85,7 @@ public class BestellingDAO {
         return gevondenBestelling;
     }
     
+    @Override
     public boolean existsByIdBestelling (Bestelling bestelling){
         boolean exists = false;
         
@@ -90,6 +95,7 @@ public class BestellingDAO {
         return exists;
     }
     
+    @Override
     public List<Bestelling> readAll()   {
         List<Bestelling> bestellingen = new ArrayList<>();
         EntityManager entityManager;
@@ -106,6 +112,7 @@ public class BestellingDAO {
         return bestellingen;
     }
     
+    @Override
      public List<Bestelling> readByIdKlant(Bestelling bestelling)  {
         List<Bestelling> bestellingen = new ArrayList<>();
         int id = bestelling.getIdKlant();
@@ -132,6 +139,7 @@ public class BestellingDAO {
         return bestellingen;
      }
      
+    @Override
      public boolean existsByIdKlant(Bestelling bestelling)  {
           boolean exists = false;
           List<Bestelling> bestellingen = readByIdKlant (bestelling);
@@ -141,6 +149,7 @@ public class BestellingDAO {
           return exists;
      }
      
+    @Override
       public void update(Bestelling bestelling){
           EntityManager entityManager = null;
         

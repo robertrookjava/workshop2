@@ -8,13 +8,15 @@ package com.mycompany.mavenproject2.database.dao;
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import com.mycompany.mavenproject2.model.Accounttype;
 import javax.persistence.EntityManager;
+import com.mycompany.mavenproject2.database.daointerface.AccounttypeDAOInterface;
 
 /**
  *
  * @author robertrook
  */
-public class AccounttypeDAO {
+public class AccounttypeDAO implements AccounttypeDAOInterface {
     
+    @Override
     public void create(Accounttype accounttype)   {
         EntityManager entityManager = null;
         

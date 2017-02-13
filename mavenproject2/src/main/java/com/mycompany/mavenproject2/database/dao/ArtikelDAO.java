@@ -32,13 +32,15 @@ import javax.persistence.TypedQuery;
 
 import com.mycompany.mavenproject2.Util.EntityManagerUtil;
 import javax.persistence.TemporalType;
+import com.mycompany.mavenproject2.database.daointerface.ArtikelDAOInterface;
 
 /**
  *
  * @author robertrook
  */
-public class ArtikelDAO {
+public class ArtikelDAO implements ArtikelDAOInterface {
     
+    @Override
     public void create(Artikel artikel){
         EntityManager entityManager = null;
         
@@ -56,6 +58,7 @@ public class ArtikelDAO {
         
     }
     
+    @Override
     public void delete(Artikel artikel){
         EntityManager entityManager = null;
         
@@ -79,6 +82,7 @@ public class ArtikelDAO {
         
     
     
+    @Override
     public Artikel read (Artikel artikel){
         Artikel gevondenArtikel = new Artikel();
         
@@ -99,6 +103,7 @@ public class ArtikelDAO {
     
     }
     
+    @Override
     public boolean existsByIdArtikel (Artikel artikel){
         
         Artikel gevondenArtikel = read (artikel);
@@ -109,6 +114,7 @@ public class ArtikelDAO {
     
     
     // even vragen of uitzoeken
+    @Override
     public boolean existsBestelArtikelByIdArtikel (Artikel artikel){
          boolean exists = false;
          EntityManager entityManager;
@@ -135,6 +141,7 @@ public class ArtikelDAO {
     
     
     
+    @Override
     public boolean existsByNaam(Artikel artikel){
         boolean exists = false;
         EntityManager entityManager;
@@ -158,6 +165,7 @@ public class ArtikelDAO {
         
     }
     
+    @Override
     public List<Artikel> readAll(){
         List<Artikel> artikelen = new ArrayList<>();
         EntityManager entityManager;
@@ -177,6 +185,7 @@ public class ArtikelDAO {
         return artikelen;
     }
     
+    @Override
     public List<Artikel> readByNaam(Artikel artikel){
         List<Artikel> artikelen = new ArrayList<>();
         
@@ -199,6 +208,7 @@ public class ArtikelDAO {
         return artikelen;
     }
      
+    @Override
     public void update(Artikel artikel){
         EntityManager entityManager = null;
         

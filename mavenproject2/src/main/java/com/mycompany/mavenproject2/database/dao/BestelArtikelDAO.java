@@ -14,13 +14,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import com.mycompany.mavenproject2.database.daointerface.BestelArtikelDAOInterface;
 
 /**
  *
  * @author robertrook
  */
-public class BestelArtikelDAO {
+public class BestelArtikelDAO implements BestelArtikelDAOInterface {
     
+    @Override
     public void create(BestelArtikel bestelArtikel){
          
         EntityManager entityManager = null;
@@ -43,6 +45,7 @@ public class BestelArtikelDAO {
      
      
      // doen met BestelArtikelPK ->
+    @Override
     public void delete(BestelArtikel bestelArtikel){
         EntityManager entityManager = null;
         
@@ -75,6 +78,7 @@ public class BestelArtikelDAO {
          
     }
      
+    @Override
     public BestelArtikel read (BestelArtikel bestelArtikel) {
         EntityManager entityManager = null;
         
@@ -106,6 +110,7 @@ public class BestelArtikelDAO {
         return gevondenBestelArtikel;
     }
       
+    @Override
     public boolean existsByIdBestellingIdArtikel (BestelArtikel bestelArtikel) {
           
         boolean exists = false;
@@ -118,6 +123,7 @@ public class BestelArtikelDAO {
       
       // doen met BestelArtikelPK <-
       
+    @Override
     public List<BestelArtikel> readAll()   {
         List<BestelArtikel> bestelArtikelen = new ArrayList<>();
            
@@ -134,6 +140,7 @@ public class BestelArtikelDAO {
         return bestelArtikelen;
     }
        
+    @Override
     public List<BestelArtikel> readByIdBestelling (BestelArtikel bestelArtikel)  {
         List<BestelArtikel> bestelArtikelen = new ArrayList<>();
         int idBestelling = bestelArtikel.getIdBestelling();
@@ -154,6 +161,7 @@ public class BestelArtikelDAO {
         return bestelArtikelen;
     }
        
+    @Override
     public void update(BestelArtikel bestelArtikel){
         EntityManager entityManager = null;
         

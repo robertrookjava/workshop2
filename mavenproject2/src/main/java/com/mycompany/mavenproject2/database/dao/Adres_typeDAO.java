@@ -4,11 +4,11 @@
  * and open the template in the editor.
  */
 package com.mycompany.mavenproject2.database.dao;
-
+import com.mycompany.mavenproject2.database.daointerface.Adres_typeDAOInterface;
 /**
  *
  * @author robertrook
  */
-public class Adres_typeDAO {
+public class Adres_typeDAO implements Adres_typeDAOInterface{
     
 }
