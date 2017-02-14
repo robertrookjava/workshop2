@@ -7,12 +7,17 @@ package com.mycompany.mavenproject2.modelinterface;
 
 import com.mycompany.mavenproject2.pojo.Klant;
 import java.util.List;
+import com.mycompany.mavenproject2.database.daointerface.KlantDAOInterface;
 
 /**
  *
  * @author robertrook
  */
 public interface KlantModelInterface {
+    
+    void setKlantDAOInterface (KlantDAOInterface klantDAOInterface);
+    
+    KlantDAOInterface getKlantDAOInterface();
     
     void createKlant(String voornaam, String achternaam, String tussenvoegsel, String telefoonnummer, String emailadres);
     

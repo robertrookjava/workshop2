@@ -8,12 +8,18 @@ package com.mycompany.mavenproject2.modelinterface;
 import com.mycompany.mavenproject2.pojo.Artikel;
 import java.math.BigDecimal;
 import java.util.List;
+import com.mycompany.mavenproject2.database.daointerface.ArtikelDAOInterface;
 
 /**
  *
  * @author robertrook
  */
 public interface ArtikelModelInterface {
+    
+    void setArtikelDAOInterface (ArtikelDAOInterface artikelDAOInterface);
+    
+    ArtikelDAOInterface getArtikelDAOInterface();
+    
     
     void createArtikel(String naam, BigDecimal prijs, int voorraad);
     

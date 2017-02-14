@@ -7,11 +7,14 @@ package com.mycompany.mavenproject2.model;
 
 import com.mycompany.mavenproject2.database.dao.ArtikelDAO;
 import com.mycompany.mavenproject2.database.dao.KlantDAO;
+import com.mycompany.mavenproject2.database.daointerface.KlantDAOInterface;
+import com.mycompany.mavenproject2.database.daointerface.ArtikelDAOInterface;
 import com.mycompany.mavenproject2.pojo.Artikel;
 import com.mycompany.mavenproject2.pojo.Klant;
 import java.util.List;
 import com.mycompany.mavenproject2.modelinterface.KlantModelInterface;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -20,10 +23,25 @@ import org.springframework.stereotype.Component;
 @Component
 public class KlantModel implements KlantModelInterface {
     
+    @Autowired
+    private KlantDAOInterface klantDAOInterface;
+    
+    private ArtikelDAOInterface artikelDAOInterface;
+    
+    @Override
+    public void setKlantDAOInterface(KlantDAOInterface klantDAOInterface) {
+        this.klantDAOInterface=klantDAOInterface;
+    }
+
+    @Override
+    public KlantDAOInterface getKlantDAOInterface() {
+        return this.klantDAOInterface;
+    }
+    
     @Override
     public void createKlant(String voornaam, String achternaam, String tussenvoegsel, String telefoonnummer, String emailadres){
         
-        KlantDAO klantDao = new KlantDAO();
+    
         Klant klant = new Klant();
        
         
@@ -34,7 +52,7 @@ public class KlantModel implements KlantModelInterface {
         klant.setTelefoonnummer(telefoonnummer);
         klant.setEmailadres(emailadres);
 
-        klantDao.create(klant);
+        klantDAOInterface.create(klant);
 
     }
       
@@ -45,10 +63,10 @@ public class KlantModel implements KlantModelInterface {
         
         if (exists){
         
-            KlantDAO klantDao = new KlantDAO();
+            
             Klant klant = new Klant();
             klant.setIdKlant(idKlant);
-            klantDao.delete(klant);
+            klantDAOInterface.delete(klant);
         }
 
     }
@@ -58,11 +76,11 @@ public class KlantModel implements KlantModelInterface {
     public Klant readByIDKlant(int idKlant){
         
         
-        KlantDAO klantDao = new KlantDAO();
+        
         Klant klant = new Klant();
         klant.setIdKlant(idKlant);
     
-        Klant gevondenKlant = klantDao.read(klant);
+        Klant gevondenKlant = klantDAOInterface.read(klant);
 
         return gevondenKlant;
    
@@ -73,11 +91,11 @@ public class KlantModel implements KlantModelInterface {
     public boolean existsByIDKlant(int idKlant){
         
         
-        KlantDAO klantDao = new KlantDAO();
+    
         Klant klant = new Klant();
         klant.setIdKlant(idKlant);
     
-        boolean exists = klantDao.existsByIdKLant(klant);
+        boolean exists = klantDAOInterface.existsByIdKLant(klant);
 
         return exists;
    
@@ -86,21 +104,21 @@ public class KlantModel implements KlantModelInterface {
     @Override
     public boolean existsBestellingByIdKlant (int idKlant){
        
-        KlantDAO klantDao = new KlantDAO();
+        
         Klant klant = new Klant();
         klant.setIdKlant(idKlant);
-        boolean exists = klantDao.existsBestellingByIdKlant(klant);
+        boolean exists = klantDAOInterface.existsBestellingByIdKlant(klant);
         return exists;
     }
     
     @Override
     public boolean existsBestelArtikelByIdArtikel (int idArtikel){
        
-        ArtikelDAO artikelDao = new ArtikelDAO();
-        List<Artikel> artikelen = artikelDao.readAll();
+      
+        List<Artikel> artikelen = artikelDAOInterface.readAll();
         Artikel artikel = new Artikel();
         artikel.setIdArtikel(idArtikel);
-        boolean exists = artikelDao.existsBestelArtikelByIdArtikel(artikel);
+        boolean exists = artikelDAOInterface.existsBestelArtikelByIdArtikel(artikel);
         return exists;
     }
     
@@ -108,7 +126,7 @@ public class KlantModel implements KlantModelInterface {
     public void updateKlant(int idKlant, String voornaam, String achternaam, String tussenvoegsel, String telefoonnummer, String emailadres) {
         
         
-        KlantDAO klantDao = new KlantDAO();
+    
         Klant klant = new Klant();
         klant.setIdKlant(idKlant);
         klant.setVoornaam(voornaam);
@@ -117,15 +135,15 @@ public class KlantModel implements KlantModelInterface {
         klant.setTelefoonnummer(telefoonnummer);
         klant.setEmailadres(emailadres);
    
-        klantDao.update(klant);
+        klantDAOInterface.update(klant);
  
     }
     
     @Override
     public List<Klant> readAllKlant() {
         
-        KlantDAO klantDao = new KlantDAO();
-        List<Klant> klanten = klantDao.readAll();
+        
+        List<Klant> klanten = klantDAOInterface.readAll();
        
         return klanten;
 
@@ -139,7 +157,7 @@ public class KlantModel implements KlantModelInterface {
         KlantDAO klantDao = new KlantDAO();
         Klant klant = new Klant();
         klant.setAchternaam(achternaam);
-        List<Klant> klanten = klantDao.readByAchternaamKlant(klant);
+        List<Klant> klanten = klantDAOInterface.readByAchternaamKlant(klant);
         
         return klanten;
      
@@ -152,11 +170,12 @@ public class KlantModel implements KlantModelInterface {
         KlantDAO klantDao = new KlantDAO();
         Klant klant = new Klant();
         klant.setAchternaam(achternaam);
-        boolean exists = klantDao.existsByAchternaamKlant(klant);
+        boolean exists = klantDAOInterface.existsByAchternaamKlant(klant);
         
         return exists;
      
     }
+
     
     
     

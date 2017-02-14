@@ -12,6 +12,8 @@ import java.sql.*;
 import com.mycompany.mavenproject2.robertclasses.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.mycompany.mavenproject2.Util.Config;
 
 
 
@@ -44,10 +46,22 @@ public class Application {
         logger.warn("Hello World");
         logger.error("Hello World");
         
-        Model model = new Model();
-        View view = new View ();
-        Controller controller = new Controller (model, view);
-        controller.run();   
+        //Model model = new Model();
+        //View view = new View ();
+        //Controller controller = new Controller ();
+        //controller.run();
+        
+        AnnotationConfigApplicationContext context = 
+        new AnnotationConfigApplicationContext();
+        
+        context.register(Config.class);
+        context.refresh();
+
+        //MediaPlayer mediaplayer = context.getBean(MediaPlayer.class);
+        //mediaplayer.play();
+        
+        Controller controller = context.getBean(Controller.class);
+        controller.run();
     }
     
     

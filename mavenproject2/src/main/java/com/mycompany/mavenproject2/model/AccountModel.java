@@ -7,11 +7,15 @@ package com.mycompany.mavenproject2.model;
 
 import com.mycompany.mavenproject2.database.dao.AccountDAO;
 import com.mycompany.mavenproject2.database.dao.AccounttypeDAO;
+import com.mycompany.mavenproject2.database.daointerface.AccountDAOInterface;
 import com.mycompany.mavenproject2.pojo.Account;
 import com.mycompany.mavenproject2.pojo.Accounttype;
 import java.util.Date;
 import com.mycompany.mavenproject2.modelinterface.AccountModelInterface;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
+import com.mycompany.mavenproject2.database.daointerface.AccounttypeDAOInterface;
+
 
 /**
  *
@@ -20,15 +24,50 @@ import org.springframework.stereotype.Component;
 @Component
 public class AccountModel implements AccountModelInterface {
     
+    
+    
+    @Autowired
+    private AccountDAOInterface accountDAOInterface;
+    
+    @Autowired
+    private AccounttypeDAOInterface accounttypeDaoInterface;
+    
+    
+    
+    
+    
+    
+@Override
+    public void setAccountDAOInterface(AccountDAOInterface accountDAOInterface) {
+        this.accountDAOInterface = accountDAOInterface;
+    }
+
+    @Override
+    public AccountDAOInterface getAccountDAOInterface() {
+        return this.accountDAOInterface;
+    }  
+    
+    @Override
+    public void setAccounttypeDAOInterface(AccounttypeDAOInterface accounttypeDAOInterface) {
+        this.accounttypeDaoInterface=accounttypeDAOInterface;
+    }
+
+    @Override
+    public AccounttypeDAOInterface getAccounttypeDAOInterface() {
+       return this.accounttypeDaoInterface;
+    }
+    
+    
+    
     private void maakAccountTypeRecord(){
         
         
-        AccounttypeDAO accounttypeDao = new AccounttypeDAO();
+        
         Accounttype accounttype = new Accounttype();
         accounttype.setId(1);
         accounttype.setTYpe("amin");
         
-        accounttypeDao.create(accounttype);
+        accounttypeDaoInterface.create(accounttype);
         
         
         
@@ -40,11 +79,11 @@ public class AccountModel implements AccountModelInterface {
         boolean output = false;
         
         
-        AccountDAO accountDao = new  AccountDAO();
+        
         Account account = new Account();
         account.setIdAccount(1);
       
-        output = accountDao.bestaatAccount(account);
+        output = accountDAOInterface.bestaatAccount(account);
 
       
         
@@ -58,7 +97,7 @@ public class AccountModel implements AccountModelInterface {
     
     private void maakAccountRecord(){
         
-        AccountDAO accountDao = new  AccountDAO();
+        
         Account account = new Account();
         account.setIdAccount(1);
         account.setGebruikersnaam("Robert Rook");
@@ -66,7 +105,7 @@ public class AccountModel implements AccountModelInterface {
         account.setDatum_Aanmaak (new Date());
         account.setAccountype_id(1);
         
-        accountDao.create(account);
+        accountDAOInterface.create(account);
        
         
         
@@ -82,5 +121,9 @@ public class AccountModel implements AccountModelInterface {
             maakAccountRecord();
         }
      }
+
+    
+
+    
     
 }

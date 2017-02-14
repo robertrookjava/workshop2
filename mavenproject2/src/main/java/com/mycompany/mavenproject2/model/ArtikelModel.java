@@ -6,11 +6,13 @@
 package com.mycompany.mavenproject2.model;
 
 import com.mycompany.mavenproject2.database.dao.ArtikelDAO;
+import com.mycompany.mavenproject2.database.daointerface.ArtikelDAOInterface;
 import com.mycompany.mavenproject2.pojo.Artikel;
 import java.math.BigDecimal;
 import java.util.List;
 import com.mycompany.mavenproject2.modelinterface.ArtikelModelInterface;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -19,10 +21,23 @@ import org.springframework.stereotype.Component;
 @Component
 public class ArtikelModel implements ArtikelModelInterface{
     
+    @Autowired
+    private ArtikelDAOInterface artikelDAOInterface;
+    
+    @Override
+    public void setArtikelDAOInterface(ArtikelDAOInterface artikelDAOInterface) {
+        this.artikelDAOInterface = artikelDAOInterface;
+    }
+
+    @Override
+    public ArtikelDAOInterface getArtikelDAOInterface() {
+       return this.artikelDAOInterface;
+    }
+    
      @Override
      public void createArtikel(String naam, BigDecimal prijs, int voorraad){ 
        
-        ArtikelDAO artikelDao = new ArtikelDAO();
+        
        
         Artikel artikel = new Artikel();
         artikel.setIdArtikel(0);
@@ -30,7 +45,7 @@ public class ArtikelModel implements ArtikelModelInterface{
         artikel.setPrijs(prijs);
         artikel.setVoorraad(voorraad);
         
-        artikelDao.create(artikel);
+        artikelDAOInterface.create(artikel);
         //System.out.println("Robert1 "+artikel.getIdArtikel());
     }
     
@@ -39,11 +54,11 @@ public class ArtikelModel implements ArtikelModelInterface{
         boolean exists = existsByIdArtikel (idArtikel);
         if (exists){
       
-            ArtikelDAO artikelDao = new ArtikelDAO();
+            
             Artikel artikel = new Artikel();
             artikel.setIdArtikel(idArtikel);
       
-            artikelDao.delete(artikel);
+            artikelDAOInterface.delete(artikel);
         }
         
     }
@@ -51,10 +66,10 @@ public class ArtikelModel implements ArtikelModelInterface{
      @Override
     public Artikel readByIdArtikel (int idArtikel){
         
-        ArtikelDAO artikelDao = new ArtikelDAO();
+        
         Artikel artikel = new Artikel();
         artikel.setIdArtikel(idArtikel);
-        Artikel gevondenArtikel = artikelDao.read(artikel);
+        Artikel gevondenArtikel = artikelDAOInterface.read(artikel);
   
         return gevondenArtikel;
     }
@@ -62,10 +77,10 @@ public class ArtikelModel implements ArtikelModelInterface{
      @Override
     public boolean existsByIdArtikel (int idArtikel){
        
-        ArtikelDAO artikelDao = new ArtikelDAO();
+        
         Artikel artikel = new Artikel();
         artikel.setIdArtikel(idArtikel);
-        boolean exists = artikelDao.existsByIdArtikel(artikel);
+        boolean exists = artikelDAOInterface.existsByIdArtikel(artikel);
   
         return exists;
    }
@@ -76,14 +91,14 @@ public class ArtikelModel implements ArtikelModelInterface{
      @Override
     public void updateArtikel(int idArtikel, String naam, BigDecimal prijs, int voorraad){
        
-        ArtikelDAO artikelDao = new ArtikelDAO();
+        
         Artikel artikel = new Artikel();
         artikel.setIdArtikel(idArtikel);
         artikel.setNaam(naam);
         artikel.setPrijs(prijs);
         artikel.setVoorraad(voorraad);
 
-        artikelDao.update(artikel);
+        artikelDAOInterface.update(artikel);
     }
     
      @Override
@@ -122,8 +137,8 @@ public class ArtikelModel implements ArtikelModelInterface{
     public List<Artikel> readAllArtikel () {
 
         
-        ArtikelDAO artikelDao = new ArtikelDAO();
-        List<Artikel> artikelen = artikelDao.readAll();
+        
+        List<Artikel> artikelen = artikelDAOInterface.readAll();
        
         return artikelen;
    }
@@ -132,10 +147,10 @@ public class ArtikelModel implements ArtikelModelInterface{
      @Override
     public List<Artikel> readByNameArtikel (String naam) {
         
-        ArtikelDAO artikelDao = new ArtikelDAO();
+        
         Artikel artikel = new Artikel();
         artikel.setNaam(naam);
-        List<Artikel> artikelen = artikelDao.readByNaam(artikel);
+        List<Artikel> artikelen = artikelDAOInterface.readByNaam(artikel);
         
         return artikelen;
        
@@ -144,13 +159,15 @@ public class ArtikelModel implements ArtikelModelInterface{
      @Override
     public boolean existsByNameArtikel (String naam) {
         
-        ArtikelDAO artikelDao = new ArtikelDAO();
+        
         Artikel artikel = new Artikel();
         artikel.setNaam(naam);
-        boolean exists = artikelDao.existsByNaam(artikel);
+        boolean exists = artikelDAOInterface.existsByNaam(artikel);
         
         return exists;
        
     }
+
+    
     
 }

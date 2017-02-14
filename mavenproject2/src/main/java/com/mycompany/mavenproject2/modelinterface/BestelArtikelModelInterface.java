@@ -7,12 +7,18 @@ package com.mycompany.mavenproject2.modelinterface;
 
 import com.mycompany.mavenproject2.pojo.BestelArtikel;
 import java.util.List;
+import com.mycompany.mavenproject2.database.daointerface.BestelArtikelDAOInterface;
+
 
 /**
  *
  * @author robertrook
  */
 public interface BestelArtikelModelInterface {
+    
+    void setBestelArtikelDAOInterface (BestelArtikelDAOInterface bestelArtikelDAOInterface);
+    
+    BestelArtikelDAOInterface getBestelArtikelDAOInterface();
     
     void createBestelArtikel(int idBestelling, int idArtikel, int aantal);
     

@@ -7,12 +7,17 @@ package com.mycompany.mavenproject2.modelinterface;
 
 import com.mycompany.mavenproject2.pojo.Bestelling;
 import java.util.List;
+import com.mycompany.mavenproject2.database.daointerface.BestellingDAOInterface;
 
 /**
  *
  * @author robertrook
  */
 public interface BestellingModelInterface {
+    
+    void setBestellingDAOInterface (BestellingDAOInterface bestellingDAOInterface);
+    BestellingDAOInterface getBestellingDAOInterface();
+    
     
     int createBestelling(int idKlant, int idAccount);
     

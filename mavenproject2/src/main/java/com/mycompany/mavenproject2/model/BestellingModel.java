@@ -6,11 +6,13 @@
 package com.mycompany.mavenproject2.model;
 
 import com.mycompany.mavenproject2.database.dao.BestellingDAO;
+import com.mycompany.mavenproject2.database.daointerface.BestellingDAOInterface;
 import com.mycompany.mavenproject2.pojo.Bestelling;
 import java.util.Date;
 import java.util.List;
 import com.mycompany.mavenproject2.modelinterface.BestellingModelInterface;
 import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Autowired;
 
 /**
  *
@@ -19,17 +21,30 @@ import org.springframework.stereotype.Component;
 @Component
 public class BestellingModel implements BestellingModelInterface {
     
+    @Autowired
+    private BestellingDAOInterface bestellingDAOInterface;
+    
+    @Override
+    public void setBestellingDAOInterface(BestellingDAOInterface bestellingDAOInterface) {
+       this.bestellingDAOInterface = bestellingDAOInterface;
+    }
+
+    @Override
+    public BestellingDAOInterface getBestellingDAOInterface() {
+        return this.bestellingDAOInterface;
+    }
+    
     @Override
     public int createBestelling(int idKlant, int idAccount){
        
-        BestellingDAO bestellingDao = new BestellingDAO();
+        
         Bestelling bestelling = new Bestelling();
         bestelling.setIdBestelling(0);
         bestelling.setIdKlant(idKlant);
         bestelling.setDatum_Bestelling(new Date());
         bestelling.setIdAccount(idAccount);
         
-        int idBestelling = bestellingDao.create(bestelling);
+        int idBestelling = bestellingDAOInterface.create(bestelling);
       
         return idBestelling;
     }
@@ -37,11 +52,11 @@ public class BestellingModel implements BestellingModelInterface {
     @Override
     public void deleteBestelling(int idBestelling){
         
-        BestellingDAO bestellingDao = new BestellingDAO();
+        
         Bestelling bestelling = new Bestelling();
         bestelling.setIdBestelling(idBestelling);
         
-        bestellingDao.delete(bestelling);
+        bestellingDAOInterface.delete(bestelling);
     
     }
     
@@ -49,10 +64,10 @@ public class BestellingModel implements BestellingModelInterface {
     public Bestelling readByIdBestelling(int idBestelling){
         
         
-        BestellingDAO bestellingDao = new BestellingDAO();
+        
         Bestelling bestelling = new Bestelling();
         bestelling.setIdBestelling(idBestelling);
-        Bestelling gevondenBestelling = bestellingDao.read(bestelling);
+        Bestelling gevondenBestelling = bestellingDAOInterface.read(bestelling);
 
         return gevondenBestelling;
      
@@ -63,10 +78,10 @@ public class BestellingModel implements BestellingModelInterface {
     public boolean existsByIdBestelling(int idBestelling){
         
         
-        BestellingDAO bestellingDao = new BestellingDAO();
+        
         Bestelling bestelling = new Bestelling();
         bestelling.setIdBestelling(idBestelling);
-        boolean exists = bestellingDao.existsByIdBestelling(bestelling);
+        boolean exists = bestellingDAOInterface.existsByIdBestelling(bestelling);
 
         return exists;
      
@@ -77,8 +92,8 @@ public class BestellingModel implements BestellingModelInterface {
     @Override
     public List<Bestelling> readAllBestelling(){
         
-        BestellingDAO bestellingDao = new BestellingDAO();
-        List<Bestelling> bestellingen = bestellingDao.readAll();
+        
+        List<Bestelling> bestellingen = bestellingDAOInterface.readAll();
        
         return bestellingen;
  
@@ -88,10 +103,10 @@ public class BestellingModel implements BestellingModelInterface {
     public List<Bestelling> readByIdKlantBestelling(int idKlant){
         
         
-        BestellingDAO bestellingDao = new BestellingDAO();
+        
         Bestelling bestelling = new Bestelling();
         bestelling.setIdKlant(idKlant);
-        List<Bestelling> bestellingen = bestellingDao.readByIdKlant(bestelling);
+        List<Bestelling> bestellingen = bestellingDAOInterface.readByIdKlant(bestelling);
         
         return bestellingen;
     }
@@ -99,7 +114,7 @@ public class BestellingModel implements BestellingModelInterface {
     @Override
     public void updateBestelling(int idBestelling, int idKlant, int idAccount){
         
-        BestellingDAO bestellingDao = new BestellingDAO();
+        
         Bestelling bestelling = new Bestelling();
         
         bestelling.setIdBestelling(idBestelling);
@@ -107,8 +122,10 @@ public class BestellingModel implements BestellingModelInterface {
         bestelling.setDatum_Bestelling(new Date());
         bestelling.setIdAccount(idAccount);
 
-        bestellingDao.update(bestelling);
+        bestellingDAOInterface.update(bestelling);
 
     }
+
+    
     
 }
