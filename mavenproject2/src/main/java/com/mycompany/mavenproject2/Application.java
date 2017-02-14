@@ -13,8 +13,14 @@ import com.mycompany.mavenproject2.robertclasses.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import com.mycompany.mavenproject2.Util.Config;
 
+import org.springframework.context.*;
+import org.springframework.stereotype.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import com.mycompany.mavenproject2.controller.Controller;
 
 
 /**
@@ -22,6 +28,9 @@ import com.mycompany.mavenproject2.Util.Config;
  * @author robertrook
  */
 public class Application {
+    
+    @Autowired
+    private Controller controller;
     
     private static boolean test = false;
     
