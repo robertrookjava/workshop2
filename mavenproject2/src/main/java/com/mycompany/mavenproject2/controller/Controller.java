@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.math.BigDecimal;
 import com.mycompany.mavenproject2.modelinterface.*;
+import com.mycompany.mavenproject2.viewinterface.ViewInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.*;
 import org.springframework.stereotype.*;
@@ -22,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+
 
 
 /**
@@ -48,6 +50,9 @@ public class Controller {
     
     @Autowired
     private KlantModelInterface klantModelInterface;
+    
+    @Autowired
+    private ViewInterface viewInterface;
     
     
     public void setAccountModelInterface (AccountModelInterface accountModelInterface){
@@ -90,11 +95,19 @@ public class Controller {
         return this.klantModelInterface;
     }
     
+    public void setViewInterface (ViewInterface viewInterface){
+        this.viewInterface = viewInterface;
+    }
+    
+    public ViewInterface getViewInterface(){
+        return this.viewInterface;
+    }
+    
     
             
             
     
-    private View view = new View();
+    //private View view = new View();
     private boolean exit = false;
    
     
@@ -154,7 +167,7 @@ public class Controller {
     }
     
     private void verwerkInput_menu(){
-        view.menuScreen();
+        viewInterface.menuScreen();
     }
     
     private void verwerkInput_ma(){
@@ -163,12 +176,12 @@ public class Controller {
     }
     
     private void printArtikel (Artikel artikel){
-        view.printOutput("--------------------------");
-        view.printOutput("idArtikel = " +artikel.getIdArtikel());
-        view.printOutput("Naam = " +artikel.getNaam());
-        view.printOutput("Prijs = " +artikel.getPrijs());
-        view.printOutput("Voorraad = " +artikel.getVoorraad());
-        view.printOutput("--------------------------");
+        viewInterface.printOutput("--------------------------");
+        viewInterface.printOutput("idArtikel = " +artikel.getIdArtikel());
+        viewInterface.printOutput("Naam = " +artikel.getNaam());
+        viewInterface.printOutput("Prijs = " +artikel.getPrijs());
+        viewInterface.printOutput("Voorraad = " +artikel.getVoorraad());
+        viewInterface.printOutput("--------------------------");
     }
     
     private void printArtikelen (List<Artikel> artikelen){
@@ -178,14 +191,14 @@ public class Controller {
     }
     
     private void printKlant (Klant klant){
-        view.printOutput("--------------------------");
-        view.printOutput("idKlant = " +klant.getIdKlant());
-        view.printOutput("Voornaam = " +klant.getVoornaam());
-        view.printOutput("Achternaam = " +klant.getAchternaam());
-        view.printOutput("Tussenvoegsel = " +klant.getTussenvoegsel());
-        view.printOutput("Telefoonnummer = " +klant.getTelefoonnummer());
-        view.printOutput("Emailadres = " +klant.getEmailadres());
-        view.printOutput("--------------------------");
+        viewInterface.printOutput("--------------------------");
+        viewInterface.printOutput("idKlant = " +klant.getIdKlant());
+        viewInterface.printOutput("Voornaam = " +klant.getVoornaam());
+        viewInterface.printOutput("Achternaam = " +klant.getAchternaam());
+        viewInterface.printOutput("Tussenvoegsel = " +klant.getTussenvoegsel());
+        viewInterface.printOutput("Telefoonnummer = " +klant.getTelefoonnummer());
+        viewInterface.printOutput("Emailadres = " +klant.getEmailadres());
+        viewInterface.printOutput("--------------------------");
     }
     
     private void printKlanten (List<Klant> klanten){
@@ -207,13 +220,13 @@ public class Controller {
     
     private void verwerkInput_a1(){
         System.out.println("verwerk a1");
-        view.menuA1();
-        int idArtikel = view.getUserInputIdArtikel();
+        viewInterface.menuA1();
+        int idArtikel = viewInterface.getUserInputIdArtikel();
         boolean exists = artikelModelInterface.existsByIdArtikel(idArtikel);
         while (!exists){
-            view.printOutput("Dit idArtikel bestaat niet");
-            view.menuA1();
-            idArtikel = view.getUserInputIdArtikel();
+            viewInterface.printOutput("Dit idArtikel bestaat niet");
+            viewInterface.menuA1();
+            idArtikel = viewInterface.getUserInputIdArtikel();
             exists = artikelModelInterface.existsByIdArtikel(idArtikel);
         }
         Artikel artikel = artikelModelInterface.readByIdArtikel(idArtikel);
@@ -222,13 +235,13 @@ public class Controller {
     
     private void verwerkInput_a2(){
         System.out.println("verwerk a2");
-        view.menuA2();
-        String naam = view.getUserInputNaam();
+        viewInterface.menuA2();
+        String naam = viewInterface.getUserInputNaam();
         boolean exists = artikelModelInterface.existsByNameArtikel(naam);
         while (!exists){
-            view.printOutput("Deze naam van het artikel bestaat niet");
-            view.menuA2();
-            naam = view.getUserInputNaam();
+            viewInterface.printOutput("Deze naam van het artikel bestaat niet");
+            viewInterface.menuA2();
+            naam = viewInterface.getUserInputNaam();
             exists = artikelModelInterface.existsByNameArtikel(naam);
         }
         List<Artikel> artikelen = artikelModelInterface.readByNameArtikel(naam);
@@ -243,65 +256,65 @@ public class Controller {
     
     private void verwerkInput_a4(){
         System.out.println("verwerk a4");
-        view.menuA4();
-        String naam = view.getUserInputNaam();
-        BigDecimal prijs = view.getUserInputPrijs();
-        int voorraad = view.getUserInputVoorraad();
+        viewInterface.menuA4();
+        String naam = viewInterface.getUserInputNaam();
+        BigDecimal prijs = viewInterface.getUserInputPrijs();
+        int voorraad = viewInterface.getUserInputVoorraad();
         artikelModelInterface.createArtikel(naam, prijs, voorraad);
         
     }
     
     private void verwerkInput_a5(){
         System.out.println("verwerk a5");
-        view.menuA5();
-        int idArtikel = view.getUserInputIdArtikel();
+        viewInterface.menuA5();
+        int idArtikel = viewInterface.getUserInputIdArtikel();
         boolean exists = artikelModelInterface.existsByIdArtikel(idArtikel);
-        String naam = view.getUserInputNaam();
-        BigDecimal prijs = view.getUserInputPrijs();
-        int voorraad = view.getUserInputVoorraad();
+        String naam = viewInterface.getUserInputNaam();
+        BigDecimal prijs = viewInterface.getUserInputPrijs();
+        int voorraad = viewInterface.getUserInputVoorraad();
         artikelModelInterface.updateArtikel(idArtikel, naam, prijs, voorraad);
         if (exists) {
-            view.printOutput("Artikel is gewijzigd.");
+            viewInterface.printOutput("Artikel is gewijzigd.");
         }
         else {
-           view.printOutput("idArtikel bestaat niet.");
+           viewInterface.printOutput("idArtikel bestaat niet.");
         }
     }
     
     private void verwerkInput_a6(){
         System.out.println("verwerk a6");
-        view.menuA6();
-        int idArtikel = view.getUserInputIdArtikel();
+        viewInterface.menuA6();
+        int idArtikel = viewInterface.getUserInputIdArtikel();
         boolean exists = artikelModelInterface.existsByIdArtikel(idArtikel);
         while (!exists){
-            view.printOutput("Dit idArtikel bestaat niet");
-            view.menuA6();
-            idArtikel = view.getUserInputIdArtikel();
+            viewInterface.printOutput("Dit idArtikel bestaat niet");
+            viewInterface.menuA6();
+            idArtikel = viewInterface.getUserInputIdArtikel();
             exists = artikelModelInterface.existsByIdArtikel(idArtikel);
         }
-        idArtikel = view.getUserInputIdArtikel();
+        idArtikel = viewInterface.getUserInputIdArtikel();
         exists = klantModelInterface.existsBestelArtikelByIdArtikel(idArtikel);
         while (exists){
-            view.printOutput("Dit artikel wordt in bestellingen gebruikt");
-            view.menuA6();
-            idArtikel = view.getUserInputIdArtikel();
+            viewInterface.printOutput("Dit artikel wordt in bestellingen gebruikt");
+            viewInterface.menuA6();
+            idArtikel = viewInterface.getUserInputIdArtikel();
             exists = klantModelInterface.existsBestelArtikelByIdArtikel(idArtikel);
         }
         
         artikelModelInterface.deleteArtikel(idArtikel);
-        view.printOutput("Artikel is verwijderd.");
+        viewInterface.printOutput("Artikel is verwijderd.");
         
     }
     
     private void verwerkInput_k1(){
         System.out.println("verwerk k1");
-        view.menuK1();
-        int idKlant = view.getUserInputIdklant();
+        viewInterface.menuK1();
+        int idKlant = viewInterface.getUserInputIdklant();
         boolean exists = klantModelInterface.existsByIDKlant(idKlant);
         while (!exists){
-            view.printOutput("Dit idKlant bestaat niet");
-            view.menuK1();
-            idKlant = view.getUserInputIdklant();
+            viewInterface.printOutput("Dit idKlant bestaat niet");
+            viewInterface.menuK1();
+            idKlant = viewInterface.getUserInputIdklant();
             exists = klantModelInterface.existsByIDKlant(idKlant);
         }
         Klant klant = klantModelInterface.readByIDKlant(idKlant);
@@ -310,13 +323,13 @@ public class Controller {
     
     private void verwerkInput_k2(){
         System.out.println("verwerk k2");
-        view.menuK2();
-        String achternaam = view.getUserInputAchternaam();
+        viewInterface.menuK2();
+        String achternaam = viewInterface.getUserInputAchternaam();
         boolean exists = klantModelInterface.existsByAchternaamKlant(achternaam);
         while (!exists){
-            view.printOutput("Deze achternaam bestaat niet");
-            view.menuK2();
-            achternaam = view.getUserInputAchternaam();
+            viewInterface.printOutput("Deze achternaam bestaat niet");
+            viewInterface.menuK2();
+            achternaam = viewInterface.getUserInputAchternaam();
             exists = klantModelInterface.existsByAchternaamKlant(achternaam);
         }
         List<Klant> klanten = klantModelInterface.readByAchternaamKlant(achternaam);
@@ -332,12 +345,12 @@ public class Controller {
     
     private void verwerkInput_k4(){
         System.out.println("verwerk k4");
-        view.menuK4();
-        String voornaam = view.getUserInputVoornaam();
-        String achternaam = view.getUserInputAchternaam();
-        String tussenvoegsel = view.getUserInputTussenvoegsel();
-        String telefoonnummer = view.getUserInputTelefoonnummer();
-        String emailadres = view.getUserInputEmailadres();
+        viewInterface.menuK4();
+        String voornaam = viewInterface.getUserInputVoornaam();
+        String achternaam = viewInterface.getUserInputAchternaam();
+        String tussenvoegsel = viewInterface.getUserInputTussenvoegsel();
+        String telefoonnummer = viewInterface.getUserInputTelefoonnummer();
+        String emailadres = viewInterface.getUserInputEmailadres();
         klantModelInterface.createKlant(voornaam, achternaam, tussenvoegsel, telefoonnummer, emailadres);
         
         
@@ -345,63 +358,63 @@ public class Controller {
     
     private void verwerkInput_k5(){
         System.out.println("verwerk k5");
-        view.menuK5();
-        int idKlant = view.getUserInputIdklant();
+        viewInterface.menuK5();
+        int idKlant = viewInterface.getUserInputIdklant();
         boolean exists = klantModelInterface.existsByIDKlant(idKlant);
-        String voornaam = view.getUserInputVoornaam();
-        String achternaam = view.getUserInputAchternaam();
-        String tussenvoegsel = view.getUserInputTussenvoegsel();
-        String telefoonnummer = view.getUserInputTelefoonnummer();
-        String emailadres = view.getUserInputEmailadres();
+        String voornaam = viewInterface.getUserInputVoornaam();
+        String achternaam = viewInterface.getUserInputAchternaam();
+        String tussenvoegsel = viewInterface.getUserInputTussenvoegsel();
+        String telefoonnummer = viewInterface.getUserInputTelefoonnummer();
+        String emailadres = viewInterface.getUserInputEmailadres();
         klantModelInterface.updateKlant(idKlant, voornaam, achternaam, tussenvoegsel, telefoonnummer, emailadres);
         if (exists) {
-            view.printOutput("Klant is gewijzigd.");
+            viewInterface.printOutput("Klant is gewijzigd.");
         }
         else {
-           view.printOutput("idKlant bestaat niet.");
+           viewInterface.printOutput("idKlant bestaat niet.");
         }
     }
     
     private void verwerkInput_k6(){
         System.out.println("verwerk k6");
-        view.menuK6();
-        int idKlant = view.getUserInputIdklant();
+        viewInterface.menuK6();
+        int idKlant = viewInterface.getUserInputIdklant();
         boolean exists = klantModelInterface.existsByIDKlant(idKlant);
         while (!exists){
-            view.printOutput("Deze idKlant bestaat niet");
-            view.menuK6();
-            idKlant = view.getUserInputIdklant();
+            viewInterface.printOutput("Deze idKlant bestaat niet");
+            viewInterface.menuK6();
+            idKlant = viewInterface.getUserInputIdklant();
             exists = klantModelInterface.existsByIDKlant(idKlant);
         }
         
         
-        idKlant = view.getUserInputIdklant();
+        idKlant = viewInterface.getUserInputIdklant();
         exists = klantModelInterface.existsBestellingByIdKlant(idKlant);
         while (exists){
-            view.printOutput("De klant met dit idKlant heeft nog bestellingen");
-            view.menuK6();
-            idKlant = view.getUserInputIdklant();
+            viewInterface.printOutput("De klant met dit idKlant heeft nog bestellingen");
+            viewInterface.menuK6();
+            idKlant = viewInterface.getUserInputIdklant();
             exists = klantModelInterface.existsBestellingByIdKlant(idKlant);
         }
       
         klantModelInterface.deleteKlant(idKlant);
-        view.printOutput("Klant is verwijderd");
+        viewInterface.printOutput("Klant is verwijderd");
     }
     
     private void verwerkInput_b1(){
         System.out.println("verwerk b1");
-        view.menuB1();
-        int idKlant = view.getUserInputIdklant();
+        viewInterface.menuB1();
+        int idKlant = viewInterface.getUserInputIdklant();
         boolean exists = klantModelInterface.existsByIDKlant(idKlant);
         while (!exists){
-            view.printOutput("Deze idKlant bestaat niet");
-            view.menuK6();
-            idKlant = view.getUserInputIdklant();
+            viewInterface.printOutput("Deze idKlant bestaat niet");
+            viewInterface.menuK6();
+            idKlant = viewInterface.getUserInputIdklant();
             exists = klantModelInterface.existsByIDKlant(idKlant);
         }
         
         int idBestelling = bestellingModelInterface.createBestelling(idKlant,1);
-        view.printOutput("De bestelling met idBestelling "+ idBestelling+ " voor klant "+idKlant+" is aangemaakt");
+        viewInterface.printOutput("De bestelling met idBestelling "+ idBestelling+ " voor klant "+idKlant+" is aangemaakt");
         
     }
     
@@ -447,23 +460,23 @@ public class Controller {
         boolean existsIdBestelling;
         boolean genoegVoorraad;
         System.out.println("verwerk b2");
-        view.menuB2();
-        view.menuA1();
-        view.askUserInputAantal("Welk aantal wilt u bestellen?");
-        int idBestelling = view.getUserInputIdBestelling();
-        int idArtikel = view.getUserInputIdArtikel();
-        int aantal = view.getUserInputAantal();
+        viewInterface.menuB2();
+        viewInterface.menuA1();
+        viewInterface.askUserInputAantal("Welk aantal wilt u bestellen?");
+        int idBestelling = viewInterface.getUserInputIdBestelling();
+        int idArtikel = viewInterface.getUserInputIdArtikel();
+        int aantal = viewInterface.getUserInputAantal();
         // check uitvoeren of idBestelling en idArtikel ook bestaat en of er genoeg voorraad is van het artikel
         existsIdArtikel = artikelModelInterface.existsByIdArtikel(idArtikel);
         existsIdBestelling = bestellingModelInterface.existsByIdBestelling(idBestelling);
         while (!( existsIdArtikel && existsIdBestelling&& (aantal>0))){
-            view.printOutput("Het idArtikel of idBestelling bestaat niet of het bestelde aantal klopt niet ");
-            view.menuB2();
-            view.menuA1();
-            view.askUserInputAantal("Welk aantal wilt u bestellen?");
-            idBestelling = view.getUserInputIdBestelling();
-            idArtikel = view.getUserInputIdArtikel();
-            aantal = view.getUserInputAantal();
+            viewInterface.printOutput("Het idArtikel of idBestelling bestaat niet of het bestelde aantal klopt niet ");
+            viewInterface.menuB2();
+            viewInterface.menuA1();
+            viewInterface.askUserInputAantal("Welk aantal wilt u bestellen?");
+            idBestelling = viewInterface.getUserInputIdBestelling();
+            idArtikel = viewInterface.getUserInputIdArtikel();
+            aantal = viewInterface.getUserInputAantal();
         }
         // check of er genoeg vooraad is van het artikel
         Artikel artikel = artikelModelInterface.readByIdArtikel(idArtikel);
@@ -477,16 +490,16 @@ public class Controller {
             
         }
         else {
-            view.printOutput("Er is niet genoeg voorraad van dit artikel voor het bestelde aantal");
+            viewInterface.printOutput("Er is niet genoeg voorraad van dit artikel voor het bestelde aantal");
         }
         
     }
     private void verwerkInput_b3(){
         System.out.println("verwerk b3");
-        view.menuB3();
-        view.menuA1();
-        int idBestelling = view.getUserInputIdBestelling();
-        int idArtikel = view.getUserInputIdArtikel();
+        viewInterface.menuB3();
+        viewInterface.menuA1();
+        int idBestelling = viewInterface.getUserInputIdBestelling();
+        int idArtikel = viewInterface.getUserInputIdArtikel();
         boolean exists = bestelArtikelModelInterface.existsByIdBestellingIdArtikel(idBestelling, idArtikel);
         BestelArtikel bestelArtikel = bestelArtikelModelInterface.readByIdBestellingIdArtikel(idBestelling, idArtikel);
         int aantal = bestelArtikel.getAantal();
@@ -496,26 +509,26 @@ public class Controller {
             artikelModelInterface.verhoogVoorraadArtikel(idArtikel, aantal);
         }
         else {
-            view.printOutput("De gevraagde combinatie van bestelling en artikel bestaat niet.");
+            viewInterface.printOutput("De gevraagde combinatie van bestelling en artikel bestaat niet.");
         }
         
     }
     
     private void verwerkInput_b4(){
         System.out.println("verwerk b4");
-        view.menuB4();
-        int idKlant = view.getUserInputIdklant();
+        viewInterface.menuB4();
+        int idKlant = viewInterface.getUserInputIdklant();
         boolean exists = klantModelInterface.existsByIDKlant(idKlant);
         while (!exists){
-            view.printOutput("Dit idKlant bestaat niet");
-            view.menuK1();
-            idKlant = view.getUserInputIdklant();
+            viewInterface.printOutput("Dit idKlant bestaat niet");
+            viewInterface.menuK1();
+            idKlant = viewInterface.getUserInputIdklant();
             exists = klantModelInterface.existsByIDKlant(idKlant);
         }
         // kijken of de klant bestellingen heeft
         exists = klantModelInterface.existsBestellingByIdKlant(idKlant);
         if (!exists){
-            view.printOutput("Deze klant heeft geen bestellingen");
+            viewInterface.printOutput("Deze klant heeft geen bestellingen");
             return;
         }
         
@@ -528,18 +541,18 @@ public class Controller {
         // nu voor elke bestelling alle bijbehorende bestelartikel record weergeven
         
         for (Bestelling bestelling: bestellingen){
-            view.printOutput("idKlant ="+ bestelling.getIdKlant() );
-            view.printOutput("idbestelling ="+ bestelling.getIdBestelling() );
+            viewInterface.printOutput("idKlant ="+ bestelling.getIdKlant() );
+            viewInterface.printOutput("idbestelling ="+ bestelling.getIdBestelling() );
             
             List<BestelArtikel> bestelArtikelen = bestelArtikelModelInterface.readByIdBestellingBestelArtikel(bestelling.getIdBestelling());
             // druk nu alle informatie af van de bijbehorende records van bestelartikel 
             for (BestelArtikel x: bestelArtikelen){
-                view.printOutput("");
-                view.printOutput("-------------------------------");
-                view.printOutput("idBestelling = "+x.getIdBestelling());
-                view.printOutput("idArtikel = "+x.getIdArtikel());
-                view.printOutput("aantal = " + x.getAantal());
-                view.printOutput("-------------------------------");
+                viewInterface.printOutput("");
+                viewInterface.printOutput("-------------------------------");
+                viewInterface.printOutput("idBestelling = "+x.getIdBestelling());
+                viewInterface.printOutput("idArtikel = "+x.getIdArtikel());
+                viewInterface.printOutput("aantal = " + x.getAantal());
+                viewInterface.printOutput("-------------------------------");
             }
         }
         
@@ -557,14 +570,14 @@ public class Controller {
         // eerste even vragen welke database je wil gebruiken
         //verwerkInput_db();
         
-        view.startScreen();
-        view.menuScreen();
+        viewInterface.startScreen();
+        viewInterface.menuScreen();
         while (!(userInput.equalsIgnoreCase("exit"))){
-            view.askUserInput("Welke menu optie?");
-            userInput = view.getUserInput();
+            viewInterface.askUserInput("Welke menu optie?");
+            userInput = viewInterface.getUserInput();
             verwerkInput(userInput);
         }
-        view.endScreen();
+        viewInterface.endScreen();
     }
     
     
